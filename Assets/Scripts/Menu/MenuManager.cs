@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     public static int LvlSelected = 0;
 
+    public TextMeshProUGUI StarCountText;
     public GameObject LvLSelectPanel, ScrollView;
     public GameObject LvlButtonPrefab;
     Levels levels;
@@ -15,9 +17,10 @@ public class MenuManager : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey("LvL0Status"))
         {
-            PlayerPrefs.SetInt("LvL0Status", 1);
+            PlayerPrefs.SetInt("LvL0Status", 0);
         }
         levels = new Levels();
+        StarCountText.text = levels.CountStars().ToString();
         CreateButtons();
     }
 

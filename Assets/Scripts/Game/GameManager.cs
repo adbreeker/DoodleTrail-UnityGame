@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //game
-    public GameObject playerPrefab;
+    public GameObject startPrefab;
     public GameObject finishPrefab;
     public Drawer drawer;
     Levels levels;
-    GameObject player;
+    GameObject startingGround, player;
     int lvl_id;
     public bool starCollected = false;
     public bool noMoreLines = true;
@@ -51,11 +51,6 @@ public class GameManager : MonoBehaviour
             pausePanel.SetActive(true);
         }
 
-        if(player.transform.position.y < -20)
-        {
-            Time.timeScale = 0;
-            failPanel.SetActive(true);
-        }
     }
 
 
@@ -83,6 +78,10 @@ public class GameManager : MonoBehaviour
     public void ReverseButton()
     {
         player.GetComponent<Player>().ReverseForce();
+        foreach(ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
+        {
+            rotator.Rotate();
+        }
     }
 
     public void StartModeButton()
@@ -115,7 +114,8 @@ public class GameManager : MonoBehaviour
         //player:
         Vector3 playerLoc = level.player.position;
         Quaternion playerRot = level.player.rotation;
-        player = Instantiate(playerPrefab, playerLoc, playerRot);
+        startingGround = Instantiate(startPrefab, playerLoc, playerRot);
+        player = startingGround.GetComponent<StartingGround>().SpawnPlayer();
 
         player.GetComponent<Player>().playerPointer = playerPointer;
         playerPointer.GetComponent<PlayerPointer>().player = player;
@@ -137,7 +137,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         if(lvl_id < levels.LevelsCount())
         {
-            PlayerPrefs.SetInt("LvL" + (lvl_id + 1).ToString() + "Status", 1);
+            if(Levels.GetLvLStatus(lvl_id + 1) == -1)
+            {
+                PlayerPrefs.SetInt("LvL" + (lvl_id + 1).ToString() + "Status", 0);
+            }
         }
         startB.interactable = false;
         reloadB.interactable = false;
@@ -151,14 +154,35 @@ public class GameManager : MonoBehaviour
             nextLvLB.interactable = false;
         }
 
+        //manage lvl starts rate
+
         lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(1);
+        if(Levels.GetLvLStatus(lvl_id) < 1)
+        {
+            PlayerPrefs.SetInt("LvL" + (lvl_id).ToString() + "Status", 1);
+        }
         if(noMoreLines || starCollected)
         {
             lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(2);
+            if (Levels.GetLvLStatus(lvl_id) < 2)
+            {
+                PlayerPrefs.SetInt("LvL" + (lvl_id).ToString() + "Status", 2);
+            }
         }
         if(noMoreLines && starCollected)
         {
             lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(3);
+            if (Levels.GetLvLStatus(lvl_id) < 3)
+            {
+                PlayerPrefs.SetInt("LvL" + (lvl_id).ToString() + "Status", 3);
+            }
         }
+    }
+
+    IEnumerator LvLFailed(float deley)
+    {
+        yield return new WaitForSecondsRealtime(deley);
+        Time.timeScale = 0;
+        failPanel.SetActive(true);
     }
 }

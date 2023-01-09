@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - FinishPoint
   - Star
+  - Destroyer
   layers:
   - Default
   - TransparentFX

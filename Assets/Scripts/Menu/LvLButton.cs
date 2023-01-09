@@ -10,61 +10,61 @@ public class LvLButton : MonoBehaviour
     int lvl_id;
     int lvl_status;
     public TextMeshProUGUI button_lvl_text;
+    public GameObject star1, star2, star3;
 
     public Sprite openButton, lockedButton;
 
     public void SetUpLvLButton(int id)
     {
         lvl_id = id;
-        lvl_status = GetLvLStatus("LvL" + lvl_id.ToString() + "Status");
+        lvl_status = Levels.GetLvLStatus(lvl_id);
 
-        if (LvLUnlocked())
+        if (lvl_status >= 0)
         {
-            gameObject.GetComponent<Button>().interactable = true;
-            gameObject.GetComponent<Image>().sprite = openButton;
-            button_lvl_text.text = lvl_id.ToString();
+            SetUnlockedButton();
         }
         else
         {
-            gameObject.GetComponent<Button>().interactable = false;
-            gameObject.GetComponent<Image>().sprite = lockedButton;
-            button_lvl_text.text = "";
+            SetLockedButton();
         }
     }
 
-    int GetLvLStatus(string key)
-    {
-        int status;
-        if(!PlayerPrefs.HasKey(key))
-        {
-            PlayerPrefs.SetInt(key, 0);
-            status = 0;
-        }
-        else
-        {
-            status = PlayerPrefs.GetInt(key);
-        }
-
-        return status;
-    }
     
-    bool LvLUnlocked()
-    {
+   
 
-        if(lvl_status > 0)
+    void SetUnlockedButton()
+    {
+        gameObject.GetComponent<Button>().interactable = true;
+        gameObject.GetComponent<Image>().sprite = openButton;
+        button_lvl_text.text = lvl_id.ToString();
+
+        star1.SetActive(true);
+        star2.SetActive(true);
+        star3.SetActive(true);
+
+        if(lvl_status >= 1)
         {
-            return true;
+            star1.GetComponent<Image>().color = new Color(1, 1, 0, 1);
         }
-        else
+        if (lvl_status >= 2)
         {
-            return false;
+            star2.GetComponent<Image>().color = new Color(1, 1, 0, 1);
+        }
+        if (lvl_status == 3)
+        {
+            star3.GetComponent<Image>().color = new Color(1, 1, 0, 1);
         }
     }
 
-    void SetLocation(float x, float y)
+    void SetLockedButton()
     {
-        gameObject.GetComponent<RectTransform>().localPosition = new Vector3(x, y, 0);
-        gameObject.SetActive(true);
+        gameObject.GetComponent<Button>().interactable = false;
+        gameObject.GetComponent<Image>().sprite = lockedButton;
+        button_lvl_text.text = "";
+
+        star1.SetActive(false);
+        star2.SetActive(false);
+        star3.SetActive(false);
     }
 
     public void LoadLvl()

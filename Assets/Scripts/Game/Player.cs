@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     WheelJoint2D wj;
     public int StartMode = 1;
-    public float posXMove;
-    public float posYMove;
+    public float maxAngularVelocity;
+    public PhysicsMaterial2D engineFriction, cannonFriction;
     Vector2 direction = new Vector2(1, 0);
 
     public GameObject playerPointer = null;
@@ -19,8 +20,6 @@ public class Player : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         wj = gameObject.GetComponent<WheelJoint2D>();
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x + posXMove, gameObject.transform.position.y + posYMove, 0);
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -28,7 +27,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(StartMode == 1)
+        {
+            if (rb.angularVelocity > maxAngularVelocity)
+            {
+                rb.angularVelocity = maxAngularVelocity;
+            }
+            if (rb.angularVelocity < -maxAngularVelocity)
+            {
+                rb.angularVelocity = -maxAngularVelocity;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(transform.position.y < -20)
+        {
+            gameManager.StartCoroutine("LvLFailed", 0f);
+        }
     }
 
     public void StartPlayer()
@@ -36,12 +53,14 @@ public class Player : MonoBehaviour
         UnFreeze();
         if (StartMode == 1)
         {
+            GetComponent<CircleCollider2D>().sharedMaterial = engineFriction;
             wj.useMotor = true;
         }
-        if(StartMode == -1)
+        if (StartMode == -1)
         {
+            GetComponent<CircleCollider2D>().sharedMaterial = cannonFriction;
             wj.useMotor = false;
-            rb.AddForce(direction*50, ForceMode2D.Impulse);
+            rb.AddForce(direction * 50, ForceMode2D.Impulse);
         }
     }
 
@@ -64,26 +83,30 @@ public class Player : MonoBehaviour
         JointMotor2D motor = wj.motor;
         motor.motorSpeed *= -1;
         wj.motor = motor;
-
-        //direction arrow
-        gameObject.GetComponentInChildren<ArrowRotator>().Rotate();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Finish")
+        if (collision.gameObject.tag == "Finish")
         {
             Freeze();
             FindObjectOfType<GameManager>().LvLCompleted();
         }
-        if(collision.gameObject.tag == "Star")
+        if (collision.gameObject.tag == "Star")
         {
             gameManager.starCollected = true;
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Destroyer")
+        {
+            GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.velocity, 10.0f);
+            Destroy(playerPointer);
+            Destroy(gameObject);
+            gameManager.StartCoroutine("LvLFailed", 0.5f);
+        }
     }
 
-    public void OnBecameInvisible()
+    void OnBecameInvisible()
     {
         if (playerPointer != null)
         {
@@ -91,7 +114,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnBecameVisible()
+    void OnBecameVisible()
     {
         if (playerPointer != null)
         {

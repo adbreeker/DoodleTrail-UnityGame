@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c92850ebb34b048ab014e63730eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2414691855274254889, guid: 1649870a8d211f148ba3f608d276524d, type: 3}
+  startPrefab: {fileID: 4080749372873425661, guid: 97f14b74fce6e90419c494e76ade50f0, type: 3}
   finishPrefab: {fileID: 6417408138088885689, guid: 2751d94fa2ce8d749a045e9b2fde09d9, type: 3}
   drawer: {fileID: 49433134}
   starCollected: 0
@@ -161,6 +161,8 @@ MonoBehaviour:
   gameStarted: 0
   obsaclePrefabs:
   - {fileID: 7331501556729024850, guid: ae9ee46efc1dd0a49bbe4d78c6d57562, type: 3}
+  - {fileID: 6503139243636457730, guid: c2c6e6d1157e68f40af9ff9ae0051e33, type: 3}
+  - {fileID: 4961070408665788052, guid: 1cda4f74035b13b4db7da145bccfbdc3, type: 3}
   startB: {fileID: 1635752934}
   reloadB: {fileID: 1173434217}
   undoB: {fileID: 1260460783}

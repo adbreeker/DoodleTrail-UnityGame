@@ -22,6 +22,36 @@ public class Levels
         return counter;
     }
 
+    public static int GetLvLStatus(int lvl_id)
+    {
+        string key = "LvL" + lvl_id.ToString() + "Status";
+        int status;
+        if (!PlayerPrefs.HasKey(key))
+        {
+            PlayerPrefs.SetInt(key, -1);
+            status = -1;
+        }
+        else
+        {
+            status = PlayerPrefs.GetInt(key);
+        }
+
+        return status;
+    }
+
+    public int CountStars()
+    {
+        int stars = 0;
+        for(int i = 0; i < LevelsCount(); i++)
+        {
+            if(Levels.GetLvLStatus(i) > 0)
+            {
+                stars += Levels.GetLvLStatus(i);
+            }
+        }
+        return stars;
+    }
+
 
 
     // structs -----------------------------------------------------------------------------------------------------
@@ -67,14 +97,14 @@ public class Levels
     }
 
     // list of levels: -------------------------------------------------------------------------------------------------
-
+    
     Level CreateLvL0()
     {
         PlayerFinish player = new PlayerFinish(new Vector2(-6, -4), Quaternion.identity);
         PlayerFinish finish = new PlayerFinish(new Vector2(6, -4), Quaternion.identity);
 
-        Obstacle obs1 = new Obstacle(new Vector2(0, -3), Quaternion.identity, 0);
-        Obstacle[] obstacles = {obs1};
+        Obstacle star = new Obstacle(new Vector2(0, -3), Quaternion.identity, 0);
+        Obstacle[] obstacles = {star};
 
         Level lvl = new Level(player, finish, obstacles);
 
@@ -85,7 +115,10 @@ public class Levels
     {
         PlayerFinish player = new PlayerFinish(new Vector2(-6, 2), Quaternion.identity);
         PlayerFinish finish = new PlayerFinish(new Vector2(6, -4), Quaternion.identity);
-        Obstacle[] obstacles = { };
+
+        Obstacle star = new Obstacle(new Vector2(0, 0), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
@@ -95,7 +128,10 @@ public class Levels
     {
         PlayerFinish player = new PlayerFinish(new Vector2(6, 2), Quaternion.identity);
         PlayerFinish finish = new PlayerFinish(new Vector2(-6, -4), Quaternion.identity);
-        Obstacle[] obstacles = { };
+
+        Obstacle star = new Obstacle(new Vector2(5, 0.5f), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
@@ -105,7 +141,10 @@ public class Levels
     {
         PlayerFinish player = new PlayerFinish(new Vector2(0, 3), Quaternion.identity);
         PlayerFinish finish = new PlayerFinish(new Vector2(0, -4), Quaternion.identity);
-        Obstacle[] obstacles = { };
+
+        Obstacle star = new Obstacle(new Vector2(0, 2.4f), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
@@ -113,9 +152,12 @@ public class Levels
 
     Level CreateLvL4()
     {
-        PlayerFinish player = new PlayerFinish(new Vector2(-6, -3), Quaternion.identity);
-        PlayerFinish finish = new PlayerFinish(new Vector2(6, 3), Quaternion.identity);
-        Obstacle[] obstacles = { };
+        PlayerFinish player = new PlayerFinish(new Vector2(-6, -4f), Quaternion.identity);
+        PlayerFinish finish = new PlayerFinish(new Vector2(6, 2), Quaternion.identity);
+
+        Obstacle star = new Obstacle(new Vector2(0, -3), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
@@ -123,9 +165,12 @@ public class Levels
 
     Level CreateLvL5()
     {
-        PlayerFinish player = new PlayerFinish(new Vector2(0, 1.5f), Quaternion.identity);
-        PlayerFinish finish = new PlayerFinish(new Vector2(0, -1.5f), Quaternion.identity);
-        Obstacle[] obstacles = { };
+        PlayerFinish player = new PlayerFinish(new Vector2(0, 1), Quaternion.identity);
+        PlayerFinish finish = new PlayerFinish(new Vector2(0, -2), Quaternion.identity);
+
+        Obstacle star = new Obstacle(new Vector2(1.5f, 4.5f), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
@@ -133,14 +178,18 @@ public class Levels
 
     Level CreateLvL6()
     {
-        PlayerFinish player = new PlayerFinish(new Vector2(0, -3), Quaternion.identity);
-        PlayerFinish finish = new PlayerFinish(new Vector2(0, 3), Quaternion.identity);
-        Obstacle[] obstacles = { };
+        PlayerFinish player = new PlayerFinish(new Vector2(0, -4), Quaternion.identity);
+        PlayerFinish finish = new PlayerFinish(new Vector2(0, 2.5f), Quaternion.identity);
+
+        Obstacle star = new Obstacle(new Vector2(-5, -3), Quaternion.identity, 0);
+        Obstacle[] obstacles = { star };
+
         Level lvl = new Level(player, finish, obstacles);
 
         return lvl;
     }
 
+    //obstacle types: star - 0, wall - 1, saw - 2
 }
 
 
