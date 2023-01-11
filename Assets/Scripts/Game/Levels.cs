@@ -98,7 +98,7 @@ public class Levels
 
     // list of levels: -------------------------------------------------------------------------------------------------
     
-    Level CreateLvL0()
+    Level CreateLvL0() // this is tutorial level
     {
         PlayerFinish player = new PlayerFinish(new Vector2(-6, -4), Quaternion.identity);
         PlayerFinish finish = new PlayerFinish(new Vector2(6, -4), Quaternion.identity);

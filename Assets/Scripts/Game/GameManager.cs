@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Button nextLvLB;
     public GameObject playerPointer;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +33,17 @@ public class GameManager : MonoBehaviour
         levels = new Levels();
         lvl_id = MenuManager.LvlSelected;
         SpawnObjects();
+        if(lvl_id == 0)
+        {
+            GetComponent<TutorialManager>().StartTutorial();
+        }
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(drawer.line_index > 0)
+        if (drawer.line_index > 0)
         {
             undoB.interactable = true;
         }
@@ -78,7 +85,7 @@ public class GameManager : MonoBehaviour
     public void ReverseButton()
     {
         player.GetComponent<Player>().ReverseForce();
-        foreach(ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
+        foreach (ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
         {
             rotator.Rotate();
         }
@@ -135,9 +142,9 @@ public class GameManager : MonoBehaviour
     public void LvLCompleted()
     {
         Time.timeScale = 0;
-        if(lvl_id < levels.LevelsCount())
+        if (lvl_id < levels.LevelsCount())
         {
-            if(Levels.GetLvLStatus(lvl_id + 1) == -1)
+            if (Levels.GetLvLStatus(lvl_id + 1) == -1)
             {
                 PlayerPrefs.SetInt("LvL" + (lvl_id + 1).ToString() + "Status", 0);
             }
@@ -149,7 +156,7 @@ public class GameManager : MonoBehaviour
         startModeB.interactable = false;
         lvlCompletedPanel.SetActive(true);
 
-        if(lvl_id == (levels.LevelsCount()-1))
+        if (lvl_id == (levels.LevelsCount() - 1))
         {
             nextLvLB.interactable = false;
         }
@@ -157,11 +164,11 @@ public class GameManager : MonoBehaviour
         //manage lvl starts rate
 
         lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(1);
-        if(Levels.GetLvLStatus(lvl_id) < 1)
+        if (Levels.GetLvLStatus(lvl_id) < 1)
         {
             PlayerPrefs.SetInt("LvL" + (lvl_id).ToString() + "Status", 1);
         }
-        if(noMoreLines || starCollected)
+        if (noMoreLines || starCollected)
         {
             lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(2);
             if (Levels.GetLvLStatus(lvl_id) < 2)
@@ -169,7 +176,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("LvL" + (lvl_id).ToString() + "Status", 2);
             }
         }
-        if(noMoreLines && starCollected)
+        if (noMoreLines && starCollected)
         {
             lvlCompletedPanel.GetComponent<PanelBehavior>().SetStars(3);
             if (Levels.GetLvLStatus(lvl_id) < 3)
