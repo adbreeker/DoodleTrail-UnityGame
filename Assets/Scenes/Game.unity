@@ -200,10 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e123bd7436b1c30479bb071c48d2a73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePointPrefab: {fileID: 6565127849916209593, guid: 58a1638baa8b85a41b7a3dd5d8e5b329, type: 3}
-  lastLine: []
-  line_index: 0
-  gameManager: {fileID: 49433132}
+  m_camera: {fileID: 519420031}
+  brush: {fileID: 367793584406452257, guid: e95e0526abd8e01439af6db6ef5ed577, type: 3}
+  linesCount: 0
 --- !u!114 &49433135
 MonoBehaviour:
   m_ObjectHideFlags: 0

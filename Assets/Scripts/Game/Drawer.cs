@@ -6,22 +6,15 @@ using UnityEngine.UI;
 
 public class Drawer : MonoBehaviour
 {
-    public GameObject linePointPrefab;
-    public List<List<GameObject>> lines = new List<List<GameObject>>();
-    public List<GameObject> lastLine = new List<GameObject>();
-    public int line_index = 0;
-    bool nextline = false;
-
-    public GameManager gameManager;
+    public Camera m_camera;
+    public GameObject brush;
+    LineRenderer currentLineRenderer;
+    Vector2 lastPos;
 
     EventSystem eventSystem;
+    public int linesCount = 0;
+    List<GameObject> lines = new List<GameObject>();
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        eventSystem = GameObject.FindObjectOfType<EventSystem>();
-    }
 
     private bool IsPointerOverUIObject()
     {
@@ -32,81 +25,72 @@ public class Drawer : MonoBehaviour
         return results.Count > 0;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Start()
     {
+        eventSystem = GameObject.FindObjectOfType<EventSystem>();
+    }
 
-
-        if(!eventSystem.IsPointerOverGameObject() && !IsPointerOverUIObject())
+    void Update()
+    {
+        if(!IsPointerOverUIObject() && Time.timeScale != 0)
         {
-            if (Input.GetMouseButton(0))
-            {
-                if (PointExist(Camera.current.ScreenToWorldPoint(Input.mousePosition)) == false)
-                {
-                    Vector3 position = Camera.current.ScreenToWorldPoint(Input.mousePosition);
-                    position.z = 0;
-                    lastLine.Add(Instantiate(linePointPrefab, position, Quaternion.identity));
-                    nextline = true;
-                }
-
-                if(gameManager.gameStarted)
-                {
-                    gameManager.noMoreLines = false;
-                }
-            }
-            else
-            {
-                if (nextline)
-                {
-                    lines.Add(new List<GameObject>(lastLine));
-                    lastLine.Clear();
-                    nextline = false;
-                    line_index++;
-                }
-            }
+            Drawing();
         }
-       
+    }
+
+    void Drawing()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            CreateBrush();
+        }
+        else if (Input.GetKey(KeyCode.Mouse0))
+        {
+            PointToMousePos();
+        }
+        else
+        {
+            currentLineRenderer = null;
+        }
+    }
+
+    void CreateBrush()
+    {
+        
+        GameObject brushInstance = Instantiate(brush);
+        linesCount++;
+        lines.Add(brushInstance);
+        currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
+
+        //because you gotta have 2 points to start a line renderer, 
+        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+
+        currentLineRenderer.SetPosition(0, mousePos);
+        currentLineRenderer.SetPosition(1, mousePos);
 
     }
 
-    bool PointExist(Vector3 mousePos)
+    void AddAPoint(Vector2 pointPos)
     {
-        Vector3 loc = mousePos;
-        loc.z = 0;
+        currentLineRenderer.positionCount++;
+        int positionIndex = currentLineRenderer.positionCount - 1;
+        currentLineRenderer.SetPosition(positionIndex, pointPos);
+    }
 
-        foreach(GameObject point in lastLine)
+    void PointToMousePos()
+    {
+        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        if (lastPos != mousePos)
         {
-            if (point.transform.position == loc)
-            {
-                return true;
-            }
+            AddAPoint(mousePos);
+            lastPos = mousePos;
         }
-
-        foreach(List<GameObject> line in lines)
-        {
-            foreach(GameObject point in line)
-            {
-                if(point.transform.position == loc)
-                {
-                    return true;
-                }    
-            }
-        }
-        return false;
     }
 
     public void UndoLine()
     {
-        if(line_index > 0)
-        {
-            foreach(GameObject point in lines[line_index-1])
-            {
-                Destroy(point);
-            }
-            lines.Remove(lines[line_index - 1]);
-            line_index--;
-        }
+        linesCount--;
+        Destroy(lines[linesCount]);
+        lines.Remove(lines[linesCount]);
     }
-
-
 }

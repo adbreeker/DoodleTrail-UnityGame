@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         SpawnObjects();
         if(lvl_id == 0)
         {
-            GetComponent<TutorialManager>().StartTutorial();
+            //GetComponent<TutorialManager>().StartTutorial();
         }
 
     }
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (drawer.line_index > 0)
+        if(drawer.linesCount > 0)
         {
             undoB.interactable = true;
         }
