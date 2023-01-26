@@ -203,6 +203,7 @@ MonoBehaviour:
   m_camera: {fileID: 519420031}
   brush: {fileID: 367793584406452257, guid: e95e0526abd8e01439af6db6ef5ed577, type: 3}
   linesCount: 0
+  drawPermision: 1
 --- !u!114 &49433135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,10 +1840,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  cam: {fileID: 519420031}
   speed: 20
   rotationModifier: 90
-  scrH_Modifier: 2
-  scrW_Modifier: 4
 --- !u!212 &753756388
 SpriteRenderer:
   m_ObjectHideFlags: 0

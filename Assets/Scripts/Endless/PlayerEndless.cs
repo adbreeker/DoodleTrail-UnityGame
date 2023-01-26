@@ -7,6 +7,7 @@ public class PlayerEndless : MonoBehaviour
     public float maxAngularVelocity;
 
     public GameObject playerPointer;
+    public EndlessGameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,15 @@ public class PlayerEndless : MonoBehaviour
         }
 
     }
+
+    private void FixedUpdate()
+    {
+        if (transform.position.y < -20)
+        {
+            gameManager.StartCoroutine("LvLFailed", 0f);
+        }
+    }
+
     public void StartPlayer()
     {
         UnFreeze();
@@ -57,6 +67,7 @@ public class PlayerEndless : MonoBehaviour
             GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.velocity, 10.0f);
             Destroy(playerPointer);
             Destroy(gameObject);
+            gameManager.StartCoroutine("LvLFailed", 0.5f);
         }
     }
 

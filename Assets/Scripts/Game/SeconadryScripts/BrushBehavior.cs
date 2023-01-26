@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(EdgeCollider2D))]
 public class BrushBehavior : MonoBehaviour
@@ -17,7 +19,10 @@ public class BrushBehavior : MonoBehaviour
     void Update()
     {
         SetEdgeCollider(line);
-        DeleteOldBrush(line);
+        if(SceneManager.GetActiveScene().name == "Endless")
+        {
+            EndlessBehaviors();
+        }
     }
 
     void SetEdgeCollider(LineRenderer lineRenderer)
@@ -33,23 +38,52 @@ public class BrushBehavior : MonoBehaviour
         edgeCollider.SetPoints(edges);
     }
 
+
+    // Endless
+
+    void EndlessBehaviors()
+    {
+        //ReverseLine(line);
+        //SimplifyLine(line);
+        DeleteOldBrush(line);
+        MakeNewBrush(line);
+    }
+
     void DeleteOldBrush(LineRenderer lineRenderer)
     {
-        if(lineRenderer.positionCount >= 3)
+        if(lineRenderer.positionCount >= 2)
         {
             Camera cam = FindObjectOfType<Camera>();
-            if (lineRenderer.GetPosition(lineRenderer.positionCount - 1).x < cam.transform.position.x - 20)
+            if (lineRenderer.GetPosition(lineRenderer.positionCount - 1).x < cam.transform.position.x - 12)
             {
                 Destroy(gameObject);
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void ReverseLine(LineRenderer lineRenderer) // deprecated
     {
-        if(collision.tag == "LineEraser")
+        Vector3[] positions = new Vector3[lineRenderer.positionCount];
+        lineRenderer.GetPositions(positions);
+        Array.Reverse(positions);
+        lineRenderer.SetPositions(positions);
+    }
+
+    void SimplifyLine(LineRenderer lineRenderer) // deprecated
+    {
+        if(lineRenderer.positionCount > 1000)
         {
-            Destroy(gameObject);
+            lineRenderer.Simplify(0.001f);
         }
     }
+
+    void MakeNewBrush(LineRenderer lineRenderer)
+    {
+        if(lineRenderer.positionCount > 5)
+        {
+            FindObjectOfType<Drawer>().ResetBrush();
+        }
+    }
+
+    
 }

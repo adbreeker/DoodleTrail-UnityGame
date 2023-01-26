@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Drawer : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class Drawer : MonoBehaviour
 
     EventSystem eventSystem;
     public int linesCount = 0;
+    public bool drawPermision = true;
     List<GameObject> lines = new List<GameObject>();
 
 
@@ -32,7 +33,7 @@ public class Drawer : MonoBehaviour
 
     void Update()
     {
-        if(!IsPointerOverUIObject() && Time.timeScale != 0)
+        if(!IsPointerOverUIObject() && drawPermision && Time.timeScale != 0)
         {
             Drawing();
         }
@@ -47,6 +48,7 @@ public class Drawer : MonoBehaviour
         else if (Input.GetKey(KeyCode.Mouse0))
         {
             PointToMousePos();
+            DrawingAfterStart();
         }
         else
         {
@@ -92,5 +94,24 @@ public class Drawer : MonoBehaviour
         linesCount--;
         Destroy(lines[linesCount]);
         lines.Remove(lines[linesCount]);
+    }
+
+    public void ResetBrush()
+    {
+        if(currentLineRenderer != null && Time.timeScale != 0)
+        {
+            CreateBrush();
+        }
+    }
+
+    void DrawingAfterStart()
+    {
+        if(SceneManager.GetActiveScene().name == "Game")
+        {
+            if (GetComponent<GameManager>().gameStarted)
+            {
+                GetComponent<GameManager>().noMoreLines = false;
+            }
+        }
     }
 }
