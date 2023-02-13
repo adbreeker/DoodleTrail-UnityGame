@@ -57,10 +57,10 @@ public class PlayerEndless : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Finish")
+        if (collision.gameObject.tag == "Star")
         {
-            Freeze();
-            FindObjectOfType<GameManager>().LvLCompleted();
+            gameManager.StarCollected();
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Destroyer")
         {

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,9 +13,12 @@ public class EndlessGameManager : MonoBehaviour
     public List<Transform> obstacleSpawnPoints = new List<Transform>();
 
     public GameObject pausePanel, failPanel;
-    public TextMeshProUGUI timer;
+    public TextMeshProUGUI timer, scoreCounter, scorePause, scoreFail;
 
     float distance = 0;
+    bool uiPermision = false;
+
+    int starsCollected = 0;
 
   
 
@@ -32,9 +35,10 @@ public class EndlessGameManager : MonoBehaviour
         {
             MoveCamera();
             CountDistance();
+            CountScore();
         }    
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && uiPermision)
         {
             Time.timeScale = 0;
             pausePanel.SetActive(true);
@@ -55,6 +59,7 @@ public class EndlessGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         timer.gameObject.SetActive(false);
         drawer.drawPermision = true;
+        uiPermision = true;
         StartCoroutine("SpawnObstacles");
     }
 
@@ -67,19 +72,41 @@ public class EndlessGameManager : MonoBehaviour
             {
                 nextObstacleOn = distance + Random.Range(20f, 40f);
                 int howMany = Random.Range(1, 4);
+                if(distance > 200)
+                {
+                    howMany = Random.Range(2, 4);
+                }
+                if(distance > 800)
+                {
+                    howMany = Random.Range(2, 5);
+                }
                 int[] positions = RandomExtensions.getUniqueRandomArray(0, obstacleSpawnPoints.Count, howMany);
 
-                SpawnObstacle(positions, Random.Range(0, obstaclePrefabs.Count));
+                SpawnObstacle(positions, null);
             }
             yield return new WaitForSeconds(0.01f);
         }
     }
 
-    void SpawnObstacle(int[] positions, int type)
+    void SpawnObstacle(int[] positions, int? type)
     {
         for(int i = 0; i<positions.Length; i++)
         {
-            Instantiate(obstaclePrefabs[type], obstacleSpawnPoints[positions[i]].position, Quaternion.identity);
+            int obsType;
+            if (type==null)
+            {
+                obsType = Random.Range(0, obstaclePrefabs.Count);
+            }
+            else
+            {
+                obsType = (int)type;
+            }
+
+            Instantiate(obstaclePrefabs[obsType], obstacleSpawnPoints[positions[i]].position, Quaternion.identity);
+            if(obsType == 0)
+            {
+                break;
+            }
         }
     }
 
@@ -102,6 +129,20 @@ public class EndlessGameManager : MonoBehaviour
         {
             distance = player.transform.position.x;
         }
+    }
+
+    void CountScore()
+    {
+        scoreCounter.text = "Score:\n"
+            + ((int)distance).ToString() + " m x " + starsCollected.ToString() +
+            "<sprite=0>\n<color=yellow>" + (int)distance*starsCollected ;
+        scorePause.text = "Current score:\n<color=yellow>" + (int)distance * starsCollected;
+        scoreFail.text= "Failed with score:\n<color=yellow>" + (int)distance * starsCollected;
+    }
+
+    public void StarCollected()
+    {
+        starsCollected++;
     }
 
     IEnumerator LvLFailed(float deley)
