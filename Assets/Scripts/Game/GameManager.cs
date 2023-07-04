@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public Button nextLvLB;
     public GameObject playerPointer;
 
+    [Header("Advertisement")]
+    public GameObject adsManager;
+
     
 
     // Start is called before the first frame update
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
         SpawnObjects();
         if(lvl_id == 0)
         {
-            //GetComponent<TutorialManager>().StartTutorial();
+            GetComponent<TutorialManager>().StartTutorial();
         }
 
     }
@@ -109,6 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLvLButton()
     {
+        adsManager.GetComponent<InterestialAd>().ShowAd();
         MenuManager.LvlSelected = lvl_id + 1;
         SceneManager.LoadScene("Game");
     }
