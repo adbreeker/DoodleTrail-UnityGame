@@ -991,13 +991,57 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4543644600039244613, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
-      propertyPath: showBanner
+    - target: {fileID: -8195007306244203060, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: loadInterestial
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4543644600039244613, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
-      propertyPath: _bannerPosition
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1125765224}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569216647669543659, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
+      propertyPath: rewardMethod.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5557838196800738672, guid: 116e7e27aec192143995d0f17313b1ac, type: 3}
       propertyPath: m_RootOrder

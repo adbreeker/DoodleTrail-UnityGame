@@ -112,7 +112,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLvLButton()
     {
-        adsManager.GetComponent<InterestialAd>().ShowAd();
+        if(Random.Range(1,3) == 1)
+        {
+            adsManager.GetComponent<InterestialAd>().ShowAd();
+        }
         MenuManager.LvlSelected = lvl_id + 1;
         SceneManager.LoadScene("Game");
     }

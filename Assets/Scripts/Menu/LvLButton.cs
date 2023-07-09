@@ -69,7 +69,6 @@ public class LvLButton : MonoBehaviour
 
     public void LoadLvl()
     {
-        FindObjectOfType<BannerAd>().HideBannerAd();
         MenuManager.LvlSelected = lvl_id;
         SceneManager.LoadScene("Game");
     }

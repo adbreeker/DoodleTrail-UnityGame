@@ -4,61 +4,57 @@ using UnityEngine.Advertisements;
 public class InterestialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] string _androidAdUnitId = "Interstitial_Android";
-    [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
-    string _adUnitId;
-
-    public static bool addLoaded = false;
+    [SerializeField] string _iOSAdUnitId = "Interstitial_iOS";
+    string _adUnitId = null;
 
     void Awake()
     {
-        // Get the Ad Unit ID for the current platform:
+        //get the Ad Unit ID for the current platform:
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
-            ? _iOsAdUnitId
+            ? _iOSAdUnitId
             : _androidAdUnitId;
     }
 
-    // Load content to the Ad Unit:
-    public void LoadAd()
+    public void LoadAd() //loading ad 
     {
-        // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        if(!addLoaded)
+        //IMPORTANT! only load content AFTER initialization (AdsInitializer.cs)
+        if (!AdsParams.interestialAvailable && Advertisement.isInitialized)
         {
-            Debug.Log("Loading Ad: " + _adUnitId);
+            if (AdsParams.showAdsDebugLogs) Debug.Log("Loading Ad: " + _adUnitId);
             Advertisement.Load(_adUnitId, this);
         }
     }
 
-    // Show the loaded content in the Ad Unit:
-    public void ShowAd()
+    public void ShowAd() //showing ad
     {
-        // Note that if the ad content wasn't previously loaded, this method will fail
-        if(addLoaded)
+        if(AdsParams.interestialAvailable)
         {
-            Debug.Log("Showing Ad: " + _adUnitId);
+            if (AdsParams.showAdsDebugLogs) Debug.Log("Showing Ad: " + _adUnitId);
+            AdsParams.interestialAvailable = false;
             Advertisement.Show(_adUnitId, this);
-            addLoaded = false;
         }
     }
 
-    // Implement Load Listener and Show Listener interface methods: 
-    public void OnUnityAdsAdLoaded(string adUnitId)
+    public void OnUnityAdsAdLoaded(string adUnitId) //setting ad availability to true when ad loaded
     {
-        addLoaded = true;
-        // Optionally execute code if the Ad Unit successfully loads content.
+        if (adUnitId.Equals(_adUnitId))
+        {
+            if (AdsParams.showAdsDebugLogs) Debug.Log("Ad Loaded: " + adUnitId);
+            AdsParams.interestialAvailable = true;
+        }
     }
 
-    public void OnUnityAdsFailedToLoad(string _adUnitId, UnityAdsLoadError error, string message)
+    public void OnUnityAdsFailedToLoad(string _adUnitId, UnityAdsLoadError error, string message) //loading ad again after ad load failure
     {
-        Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
-        // Optionally execute code if the Ad Unit fails to load, such as attempting to try again.
+        if (AdsParams.showAdsDebugLogs) Debug.Log($"Error loading Ad Unit: {_adUnitId} - {error.ToString()} - {message}");
         LoadAd();
     }
 
-    public void OnUnityAdsShowFailure(string _adUnitId, UnityAdsShowError error, string message)
+    public void OnUnityAdsShowFailure(string _adUnitId, UnityAdsShowError error, string message) //setting ad availability to false and loading ad again after ad show failure
     {
-        Debug.Log($"Error showing Ad Unit {_adUnitId}: {error.ToString()} - {message}");
-        // Optionally execute code if the Ad Unit fails to show, such as loading another ad.
-        addLoaded = false;
+        if (AdsParams.showAdsDebugLogs) Debug.Log($"Error showing Ad Unit {_adUnitId}: {error.ToString()} - {message}");
+        AdsParams.interestialAvailable = false;
+        LoadAd();
     }
 
     public void OnUnityAdsShowStart(string _adUnitId) 

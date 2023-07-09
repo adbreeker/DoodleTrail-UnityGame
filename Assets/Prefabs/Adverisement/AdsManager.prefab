@@ -49,6 +49,10 @@ MonoBehaviour:
   _androidGameId: 5336627
   _iOSGameId: 5336626
   _testMode: 0
+  loadInterestial: 0
+  loadRewarded: 0
+  loadBanner: 0
+  adsDebugLogs: 1
 --- !u!114 &1082849158539466804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _androidAdUnitId: Interstitial_Android
-  _iOsAdUnitId: Interstitial_iOS
+  _iOSAdUnitId: Interstitial_iOS
 --- !u!114 &3569216647669543659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+  rewardMethods:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4543644600039244613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2feea3731bfebe4c9c15e19cc6d737a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showBanner: 0
-  _bannerPosition: 4
   _androidAdUnitId: Banner_Android
   _iOSAdUnitId: Banner_iOS
+  showBanner: 0
+  _bannerPosition: 1
