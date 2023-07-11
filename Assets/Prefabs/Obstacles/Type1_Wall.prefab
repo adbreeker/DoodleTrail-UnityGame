@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4790637953797883914}
   - component: {fileID: 2590254059620505691}
   - component: {fileID: -1250635410689865898}
+  - component: {fileID: 9206057030729708897}
   m_Layer: 0
   m_Name: Type1_Wall
   m_TagString: Ground
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f6714e0e3dee1488af3d7369b1f6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9206057030729708897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503139243636457730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace72c5763364ba4a997fce930896b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleName: Wall

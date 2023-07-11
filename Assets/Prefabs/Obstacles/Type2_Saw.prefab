@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4961070408665788075}
   - component: {fileID: 4961070408665788074}
   - component: {fileID: 4961070408665788053}
+  - component: {fileID: -5384948733939245184}
   m_Layer: 0
   m_Name: Type2_Saw
   m_TagString: Destroyer
@@ -275,3 +276,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
+--- !u!114 &-5384948733939245184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961070408665788052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace72c5763364ba4a997fce930896b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleName: Saw

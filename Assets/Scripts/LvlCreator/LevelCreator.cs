@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using static Levels;
+using static UnityEditor.Progress;
 
 public class LevelCreator : MonoBehaviour
 {
     public GameObject startingGround;
     public GameObject finishGround;
+    public GameObject baseStar;
 
     public List<GameObject> obstaclesPrefabs = new List<GameObject>();
 
-    public Transform obstalceHolder;
+    public Transform obstacleHolder;
 
-    [Space(30f)]
-    public bool createLvlScript;
-    [Header("Output:"), TextArea(1,40)]
     public string command = "";
 
     
@@ -32,7 +33,7 @@ public class LevelCreator : MonoBehaviour
         }
         else
         {
-            lvlMethod += "Quaternion.Euler(0,0," + ConvertToFloatString(startingGround.transform.rotation.eulerAngles.z) + ");\n";
+            lvlMethod += "Quaternion.Euler(0,0," + ConvertToFloatString(startingGround.transform.rotation.eulerAngles.z) + "));\n";
         }
 
         lvlMethod += "   PlayerFinish finish = new PlayerFinish(new Vector2(" + ConvertToFloatString(finishGround.transform.position.x) + ", " + ConvertToFloatString(finishGround.transform.position.y) + "), ";
@@ -42,18 +43,18 @@ public class LevelCreator : MonoBehaviour
         }
         else
         {
-            lvlMethod += "Quaternion.Euler(0,0," + ConvertToFloatString(finishGround.transform.rotation.eulerAngles.z) + ");\n\n";
+            lvlMethod += "Quaternion.Euler(0,0," + ConvertToFloatString(finishGround.transform.rotation.eulerAngles.z) + "));\n\n";
         }
 
         int[] obstaclesTypes = Enumerable.Repeat(0, obstaclesPrefabs.Count).ToArray();
         List<string> obstacleNames = new List<string>();
 
-        foreach (Transform lvlMember in obstalceHolder)
+        foreach (Transform lvlMember in obstacleHolder)
         {
             int obstacleTypeIndex = 0;
             foreach(GameObject obstaclePrefab in obstaclesPrefabs)
             {
-                if(PrefabUtility.GetCorrespondingObjectFromSource(lvlMember.gameObject) == obstaclePrefab)
+                if(lvlMember.GetComponent<ObstacleInfo>().obstacleName == obstaclePrefab.GetComponent<ObstacleInfo>().obstacleName || lvlMember.gameObject == baseStar)
                 {
                     obstaclesTypes[obstacleTypeIndex]++;
                     obstacleNames.Add(obstaclePrefab.name + obstaclesTypes[obstacleTypeIndex].ToString());
@@ -75,18 +76,18 @@ public class LevelCreator : MonoBehaviour
         }
 
         lvlMethod += "\n    Obstacle[] obstacles = { ";
-
         for(int i = 0; i<=obstacleNames.Count - 1; i++)
         {
             if(i == obstacleNames.Count - 1)
             {
-                lvlMethod += obstacleNames[i] + " };\n\n";
+                lvlMethod += obstacleNames[i];
             }
             else
             {
                 lvlMethod += obstacleNames[i] + ", ";
             }
         }
+        lvlMethod += " };\n\n";
 
         lvlMethod += "  Level lvl = new Level(player, finish, obstacles); \n\n"
             + " return lvl; \n"
@@ -103,11 +104,137 @@ public class LevelCreator : MonoBehaviour
         return converted;
     }
 
-    private void OnValidate()
+}
+
+[CustomEditor(typeof(LevelCreator))]
+class LevelCreatorEditor : Editor
+{
+    //create or use existing
+    public bool create = true;
+    public int selectedLvl = 0;
+
+    public override void OnInspectorGUI()
     {
-        CreateLevelScript();
+        LevelCreator script = (LevelCreator)target;
+
+        GUIStyle labelStyle = new GUIStyle(EditorStyles.label);
+        labelStyle.fontSize = 20;
+        labelStyle.alignment = TextAnchor.MiddleCenter;
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("startingGround"), new GUIContent("Starting Ground"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("finishGround"), new GUIContent("Finish Ground"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("baseStar"), new GUIContent("Base Star"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("obstaclesPrefabs"), new GUIContent("Obstacle Prefabs"), true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("obstacleHolder"), new GUIContent("Obstacle Holder"), true);
+
+        GUILayout.Space(20f);
+
+        if(GUILayout.Button(create? "Use Existing" : "Create"))
+        {
+            create = !create;
+            script.command = "";
+        }
+
+        GUILayout.Space(20f);
+
+        if(create)
+        {
+            EditorGUILayout.LabelField("Level Command:", labelStyle);
+            GUILayout.Space(8f);
+            SerializedProperty levelCommandProperty = serializedObject.FindProperty("command");
+            levelCommandProperty.stringValue = EditorGUILayout.TextArea(levelCommandProperty.stringValue);
+
+            GUILayout.Space(10f);
+
+            if (GUILayout.Button("Create level script", GUILayout.Height(40f)))
+            {
+                script.CreateLevelScript();
+            }
+
+            GUILayout.Space(10f);
+
+            if (GUILayout.Button("Copy to clipboard", GUILayout.Height(40f)))
+            {
+                GUIUtility.systemCopyBuffer = script.command;
+            }
+
+            GUILayout.Space(10f);
+
+            if (GUILayout.Button("Reset", GUILayout.Height(40f)))
+            {
+                script.command = "";
+                ClearLevel(script);
+            }
+        }
+        else
+        {
+            GUILayout.Space(20f);
+
+            Levels levelsList = new Levels();
+            string[] levelsToSelect = new string[levelsList.LevelsCount()];
+            for(int i = 0; i<levelsList.LevelsCount(); i++)
+            {
+                levelsToSelect[i] = "Level " + i;
+            }
+
+            selectedLvl = EditorGUILayout.Popup("Level to spawn:", selectedLvl, levelsToSelect);
+
+            GUILayout.Space(10f);
+
+            if (GUILayout.Button("Spawn", GUILayout.Height(40f)))
+            {
+                SetLevel(selectedLvl, script);
+            }
+        }
+
+       
+
+        serializedObject.ApplyModifiedProperties();
     }
 
+    void SetLevel(int lvlIndex, LevelCreator script)
+    {
+        ClearLevel(script);
+
+        Levels.Level level = new Levels().getLevel(lvlIndex);
+
+        script.startingGround.transform.position = level.player.position;
+        script.startingGround.transform.rotation = level.player.rotation;
+
+        script.finishGround.transform.position = level.finish.position;
+        script.finishGround.transform.rotation = level.finish.rotation;
+
+        script.baseStar.transform.position = level.obstacles[0].position;
+        script.baseStar.transform.rotation = level.obstacles[0].rotation;
+
+        for(int i = 1; i <level.obstacles.Length; i++)
+        {
+            Instantiate(script.obstaclesPrefabs[level.obstacles[i].type], level.obstacles[i].position, level.obstacles[i].rotation, script.obstacleHolder);
+        }
+    }
+
+    void ClearLevel(LevelCreator script)
+    {
+        script.startingGround.transform.position = new Vector3(-4, 0, 0);
+        script.startingGround.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        script.finishGround.transform.position = new Vector3(4, 0, 0);
+        script.finishGround.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        script.baseStar.transform.position = new Vector3(0, 1, 0);
+        script.baseStar.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        while(script.obstacleHolder.childCount != 1)
+        {
+            foreach (Transform obstacle in script.obstacleHolder)
+            {
+                if (obstacle.gameObject != script.baseStar)
+                {
+                    DestroyImmediate(obstacle.gameObject);
+                }
+            }
+        }
+    }
 }
 
 
