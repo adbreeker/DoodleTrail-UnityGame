@@ -7,14 +7,16 @@ using UnityEngine.SceneManagement;
 public class Drawer : MonoBehaviour
 {
     public Camera m_camera;
-    public GameObject brush;
+    public GameObject brushPrefab;
     LineRenderer currentLineRenderer;
     Vector2 lastPos;
 
     EventSystem eventSystem;
     public int linesCount = 0;
     public bool drawPermision = true;
+
     List<GameObject> lines = new List<GameObject>();
+    GameObject currentLine;
 
 
     private bool IsPointerOverUIObject()
@@ -36,6 +38,7 @@ public class Drawer : MonoBehaviour
         if(!IsPointerOverUIObject() && drawPermision && Time.timeScale != 0)
         {
             Drawing();
+            DestroyEmptyLines();
         }
     }
 
@@ -43,6 +46,7 @@ public class Drawer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            CreateNewLine();
             CreateBrush();
         }
         else if (Input.GetKey(KeyCode.Mouse0))
@@ -53,15 +57,20 @@ public class Drawer : MonoBehaviour
         else
         {
             currentLineRenderer = null;
+            currentLine = null;
         }
+    }
+
+    void CreateNewLine()
+    {
+        currentLine = new GameObject("Line");
+        linesCount++;
+        lines.Add(currentLine);
     }
 
     void CreateBrush()
     {
-        
-        GameObject brushInstance = Instantiate(brush);
-        linesCount++;
-        lines.Add(brushInstance);
+        GameObject brushInstance = Instantiate(brushPrefab, currentLine.transform);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
         //because you gotta have 2 points to start a line renderer, 
@@ -69,14 +78,21 @@ public class Drawer : MonoBehaviour
 
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
-
     }
 
     void AddAPoint(Vector2 pointPos)
     {
-        currentLineRenderer.positionCount++;
-        int positionIndex = currentLineRenderer.positionCount - 1;
-        currentLineRenderer.SetPosition(positionIndex, pointPos);
+        if(currentLineRenderer != null)
+        {
+            currentLineRenderer.positionCount++;
+            int positionIndex = currentLineRenderer.positionCount - 1;
+            currentLineRenderer.SetPosition(positionIndex, pointPos);
+
+            if (currentLineRenderer.positionCount > 5)
+            {
+                ResetBrush();
+            }
+        }
     }
 
     void PointToMousePos()
@@ -112,6 +128,26 @@ public class Drawer : MonoBehaviour
             {
                 GetComponent<GameManager>().noMoreLines = false;
             }
+        }
+    }
+
+    void DestroyEmptyLines()
+    {
+        List<GameObject> toDelete = new List<GameObject>();
+
+        foreach(GameObject line in lines)
+        {
+            if(line.transform.childCount == 0)
+            {
+                linesCount--;
+                toDelete.Add(line);
+            }
+        }
+
+        foreach(GameObject line in toDelete)
+        {
+            lines.Remove(line);
+            Destroy(line);
         }
     }
 }

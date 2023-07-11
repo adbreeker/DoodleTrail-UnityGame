@@ -23,6 +23,8 @@ public class BrushBehavior : MonoBehaviour
         {
             EndlessBehaviors();
         }
+
+        GetComponent<CircleCollider2D>().offset = line.GetPosition(0);
     }
 
     void SetEdgeCollider(LineRenderer lineRenderer)
@@ -39,12 +41,10 @@ public class BrushBehavior : MonoBehaviour
     }
 
 
-    // Endless
+    // Endless ----------------------------------------------------------------------------------------------- Endless
 
     void EndlessBehaviors()
     {
-        //ReverseLine(line);
-        //SimplifyLine(line);
         DeleteOldBrush(line);
         MakeNewBrush(line);
     }
@@ -58,22 +58,6 @@ public class BrushBehavior : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
-    }
-
-    void ReverseLine(LineRenderer lineRenderer) // deprecated
-    {
-        Vector3[] positions = new Vector3[lineRenderer.positionCount];
-        lineRenderer.GetPositions(positions);
-        Array.Reverse(positions);
-        lineRenderer.SetPositions(positions);
-    }
-
-    void SimplifyLine(LineRenderer lineRenderer) // deprecated
-    {
-        if(lineRenderer.positionCount > 1000)
-        {
-            lineRenderer.Simplify(0.001f);
         }
     }
 

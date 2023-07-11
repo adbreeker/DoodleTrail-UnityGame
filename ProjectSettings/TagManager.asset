@@ -9,6 +9,7 @@ TagManager:
   - Star
   - Destroyer
   - LineEraser
+  - Brush
   layers:
   - Default
   - TransparentFX
