@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     Levels levels;
     GameObject startingGround, player;
     int lvl_id;
-    public bool starCollected = false;
-    public bool noMoreLines = true;
-    public bool gameStarted = false;
+    [HideInInspector] public bool starCollected = false;
+    [HideInInspector] public bool noMoreLines = true;
+    [HideInInspector] public bool gameStarted = false;
     public List<GameObject> obsaclePrefabs = new List<GameObject>();
 
     //ui
