@@ -77,7 +77,7 @@ public class Drawer : MonoBehaviour
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
 
         currentLineRenderer.SetPosition(0, mousePos);
-        currentLineRenderer.SetPosition(1, mousePos);
+        currentLineRenderer.SetPosition(1, mousePos + new Vector2(0.0001f, 0.0001f));
     }
 
     void AddAPoint(Vector2 pointPos)

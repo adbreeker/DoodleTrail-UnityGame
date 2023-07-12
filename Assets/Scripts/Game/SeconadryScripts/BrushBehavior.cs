@@ -10,7 +10,7 @@ public class BrushBehavior : MonoBehaviour
     EdgeCollider2D edgeCollider;
     LineRenderer line;
 
-    void Start()
+    void Awake()
     {
         edgeCollider = this.GetComponent<EdgeCollider2D>();
         line = this.GetComponent<LineRenderer>();
@@ -27,6 +27,7 @@ public class BrushBehavior : MonoBehaviour
         GetComponent<CircleCollider2D>().offset = line.GetPosition(0);
     }
 
+
     void SetEdgeCollider(LineRenderer lineRenderer)
     {
         List<Vector2> edges = new List<Vector2>();
@@ -38,6 +39,7 @@ public class BrushBehavior : MonoBehaviour
         }
 
         edgeCollider.SetPoints(edges);
+        edgeCollider.offset = new Vector2(0, 0);
     }
 
 

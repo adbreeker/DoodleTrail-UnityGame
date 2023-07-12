@@ -13,12 +13,14 @@ public class EndlessGameManager : MonoBehaviour
     public List<Transform> obstacleSpawnPoints = new List<Transform>();
 
     public GameObject pausePanel, failPanel;
-    public TextMeshProUGUI timer, scoreCounter, scorePause, scoreFail;
+    public TextMeshProUGUI timer, scoreCounter, scorePause, scoreFail, bestScore;
 
     float distance = 0;
     bool uiPermision = false;
 
     int starsCollected = 0;
+
+    bool newBest = false;
 
   
 
@@ -133,11 +135,28 @@ public class EndlessGameManager : MonoBehaviour
 
     void CountScore()
     {
+        int score = (int)distance * starsCollected;
+
         scoreCounter.text = "Score:\n"
             + ((int)distance).ToString() + " m x " + starsCollected.ToString() +
-            "<sprite=0>\n<color=yellow>" + (int)distance*starsCollected ;
+            "<sprite=0>\n<color=yellow>" +  score;
         scorePause.text = "Current score:\n<color=yellow>" + (int)distance * starsCollected;
         scoreFail.text= "Failed with score:\n<color=yellow>" + (int)distance * starsCollected;
+
+        if(!PlayerPrefs.HasKey("BestScore"))
+        {
+            PlayerPrefs.SetInt("BestScore", 0);
+        }
+        else
+        {
+            if(PlayerPrefs.GetInt("BestScore") < score)
+            {
+                newBest = true;
+                PlayerPrefs.SetInt("BestScore", score);
+            }
+
+            bestScore.text = "Best Score:\n<color=yellow>" + PlayerPrefs.GetInt("BestScore");
+        }
     }
 
     public void StarCollected()
@@ -149,6 +168,10 @@ public class EndlessGameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
+        if(newBest)
+        {
+            scoreFail.text += "\nNew Best!";
+        }
         failPanel.SetActive(true);
     }
 
