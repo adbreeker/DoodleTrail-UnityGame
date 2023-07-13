@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == "Star")
         {
+            FindObjectOfType<SoundManager>().PlaySound(1);
             gameManager.starCollected = true;
             Destroy(collision.gameObject);
         }

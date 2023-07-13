@@ -215,15 +215,14 @@ public class Levels
     Level CreateLvL8()
     {
         PlayerFinish player = new PlayerFinish(new Vector2(-6.00f, -4.00f), Quaternion.identity);
-        PlayerFinish finish = new PlayerFinish(new Vector2(4.50f, 2.00f), Quaternion.identity);
+        PlayerFinish finish = new PlayerFinish(new Vector2(4.91f, -0.16f), Quaternion.identity);
 
-        Obstacle Type0_Star1 = new Obstacle(new Vector2(3.00f, -3.50f), Quaternion.identity, 0);
-        Obstacle Type1_Wall1 = new Obstacle(new Vector2(1.00f, 2.00f), Quaternion.Euler(0, 0, 90.00f), 1);
-        Obstacle Type1_Wall2 = new Obstacle(new Vector2(-1.50f, 2.00f), Quaternion.Euler(0, 0, 90.00f), 1);
-        Obstacle Type1_Wall3 = new Obstacle(new Vector2(-4.00f, 2.00f), Quaternion.Euler(0, 0, 90.00f), 1);
-        Obstacle Type1_Wall4 = new Obstacle(new Vector2(-6.50f, 2.00f), Quaternion.Euler(0, 0, 90.00f), 1);
+        Obstacle Type0_Star1 = new Obstacle(new Vector2(6.60f, -1.99f), Quaternion.identity, 0);
+        Obstacle Type1_Wall1 = new Obstacle(new Vector2(0.85f, -1.24f), Quaternion.Euler(0, 0, 315.00f), 1);
+        Obstacle Type1_Wall2 = new Obstacle(new Vector2(-1.09f, -2.11f), Quaternion.Euler(0, 0, 90.00f), 1);
+        Obstacle Type1_Wall3 = new Obstacle(new Vector2(-3.06f, -3.16f), Quaternion.Euler(0, 0, 315.00f), 1);
 
-        Obstacle[] obstacles = { Type0_Star1, Type1_Wall1, Type1_Wall2, Type1_Wall3, Type1_Wall4 };
+        Obstacle[] obstacles = { Type0_Star1, Type1_Wall1, Type1_Wall2, Type1_Wall3 };
 
         Level lvl = new Level(player, finish, obstacles);
 

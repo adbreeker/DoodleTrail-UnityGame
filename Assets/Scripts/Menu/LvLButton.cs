@@ -69,10 +69,10 @@ public class LvLButton : MonoBehaviour
 
     public void LoadLvl()
     {
+        FindObjectOfType<SoundManager>().PlaySound(0);
         MenuManager.LvlSelected = lvl_id;
         SceneManager.LoadScene("Game");
     }
-
 
     
 }

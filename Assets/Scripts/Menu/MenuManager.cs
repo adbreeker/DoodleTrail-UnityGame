@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        FindObjectOfType<SoundManager>().gameObject.GetComponent<AudioSource>().time = 0;
         if(!PlayerPrefs.HasKey("LvL0Status"))
         {
             PlayerPrefs.SetInt("LvL0Status", 0);
@@ -39,21 +41,25 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLevelSelectPanel()
     {
+        FindObjectOfType<SoundManager>().PlaySound(0);
         LvLSelectPanel.SetActive(true);
     }
 
     public void CloseLevelSelectPanel()
     {
+        FindObjectOfType<SoundManager>().PlaySound(0);
         LvLSelectPanel.SetActive(false);
     }
 
     public void EndlessModeButton()
     {
+        FindObjectOfType<SoundManager>().PlaySound(0);
         SceneManager.LoadScene("Endless");
     }
 
     public void ExitButton()
     {
+        FindObjectOfType<SoundManager>().PlaySound(0);
         Application.Quit();
     }
 
