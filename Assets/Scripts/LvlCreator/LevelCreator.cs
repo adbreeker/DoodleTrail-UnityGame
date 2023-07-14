@@ -66,7 +66,9 @@ public class LevelCreator : MonoBehaviour
                     }
                     else
                     {
-                        lvlMethod += "Quaternion.Euler(0,0," +  ConvertToFloatString(lvlMember.rotation.eulerAngles.z) + ") ," + obstacleTypeIndex + ");\n";
+                        lvlMethod += "Quaternion.Euler(" + ConvertToFloatString(lvlMember.rotation.eulerAngles.x) + ", "
+                            + ConvertToFloatString(lvlMember.rotation.eulerAngles.y) + ", " 
+                            + ConvertToFloatString(lvlMember.rotation.eulerAngles.z) + ") ," + obstacleTypeIndex + ");\n";
                     }
 
                     break;

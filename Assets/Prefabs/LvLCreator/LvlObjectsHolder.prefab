@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 7331501556729024850, guid: ae9ee46efc1dd0a49bbe4d78c6d57562, type: 3}
   - {fileID: 6503139243636457730, guid: c2c6e6d1157e68f40af9ff9ae0051e33, type: 3}
   - {fileID: 4961070408665788052, guid: 1cda4f74035b13b4db7da145bccfbdc3, type: 3}
+  - {fileID: 8953963404938534264, guid: 13779f2ad56639144b5aa3914453c69d, type: 3}
+  - {fileID: 3413608412178953677, guid: 7a0d6ad3140065046818617c7b641bab, type: 3}
   obstacleHolder: {fileID: 5234512043260400598}
   command: "Level CreateLvL()\n{\n   PlayerFinish player = new PlayerFinish(new Vector2(-4.00f,
     0.00f), Quaternion.identity);\n   PlayerFinish finish = new PlayerFinish(new
