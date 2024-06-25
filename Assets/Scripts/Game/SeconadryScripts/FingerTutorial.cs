@@ -7,13 +7,13 @@ public class FingerTutorial : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.localPosition;
-        if(pos.x  > 150)
+        if(pos.x  > 175)
         {
-            pos.x = -150;
+            pos.x = -175;
         }
         else
         {
-            pos.x+=2;
+            pos.x+=200 * Time.unscaledDeltaTime;
         }
         transform.localPosition = pos;
     }

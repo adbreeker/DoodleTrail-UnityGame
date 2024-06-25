@@ -5,8 +5,6 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static Levels;
-using static UnityEditor.Progress;
 
 public class LevelCreator : MonoBehaviour
 {
@@ -108,6 +106,7 @@ public class LevelCreator : MonoBehaviour
 
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(LevelCreator))]
 class LevelCreatorEditor : Editor
 {
@@ -238,5 +237,5 @@ class LevelCreatorEditor : Editor
         }
     }
 }
-
+#endif
 
