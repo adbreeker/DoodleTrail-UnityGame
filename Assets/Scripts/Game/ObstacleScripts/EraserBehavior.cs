@@ -22,7 +22,7 @@ public class EraserBehavior : MonoBehaviour
     {
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D eraseFilter = new ContactFilter2D().NoFilter();
-        GetComponent<PolygonCollider2D>().OverlapCollider(eraseFilter, colliders);
+        GetComponent<PolygonCollider2D>().Overlap(eraseFilter, colliders);
 
         foreach(Collider2D collider in colliders)
         {

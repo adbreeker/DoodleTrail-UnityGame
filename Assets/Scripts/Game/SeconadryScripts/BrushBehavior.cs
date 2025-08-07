@@ -55,7 +55,7 @@ public class BrushBehavior : MonoBehaviour
     {
         if(lineRenderer.positionCount >= 2)
         {
-            Camera cam = FindObjectOfType<Camera>();
+            Camera cam = FindFirstObjectByType<Camera>();
             if (lineRenderer.GetPosition(lineRenderer.positionCount - 1).x < cam.transform.position.x - 12)
             {
                 Destroy(gameObject);
@@ -67,7 +67,7 @@ public class BrushBehavior : MonoBehaviour
     {
         if(lineRenderer.positionCount > 5)
         {
-            FindObjectOfType<Drawer>().ResetBrush();
+            FindFirstObjectByType<Drawer>().ResetBrush();
         }
     }
 

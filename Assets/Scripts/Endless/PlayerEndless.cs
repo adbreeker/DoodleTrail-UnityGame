@@ -59,13 +59,13 @@ public class PlayerEndless : MonoBehaviour
     {
         if (collision.gameObject.tag == "Star")
         {
-            FindObjectOfType<SoundManager>().PlaySound(1);
+            FindFirstObjectByType<SoundManager>().PlaySound(1);
             gameManager.StarCollected();
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Destroyer")
         {
-            GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.velocity, 10.0f);
+            GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.linearVelocity, 10.0f);
             Destroy(playerPointer);
             Destroy(gameObject);
             gameManager.StartCoroutine("LvLFailed", 0.5f);

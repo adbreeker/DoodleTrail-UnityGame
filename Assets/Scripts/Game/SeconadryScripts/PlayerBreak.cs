@@ -20,7 +20,7 @@ public class PlayerBreak : MonoBehaviour
             GameObject fragment = Instantiate(playerFragmentPrefab, center_pos, Quaternion.identity);
             fragment.GetComponent<SpriteRenderer>().sprite = image;
             fragment.AddComponent<PolygonCollider2D>();
-            fragment.GetComponent<Rigidbody2D>().velocity = frag_vel;
+            fragment.GetComponent<Rigidbody2D>().linearVelocity = frag_vel;
             fragments.Add(fragment);
 
             frag_vel = Vector2Extension.Rotate(frag_vel, dispresion);
@@ -32,6 +32,6 @@ public class PlayerBreak : MonoBehaviour
         engine.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
         engine.transform.localScale = new Vector3(0.2f,0.2f,0);
         engine.AddComponent<PolygonCollider2D>();
-        engine.GetComponent<Rigidbody2D>().velocity = player_velocity;
+        engine.GetComponent<Rigidbody2D>().linearVelocity = player_velocity;
     }
 }

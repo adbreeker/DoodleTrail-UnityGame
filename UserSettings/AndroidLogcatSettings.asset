@@ -1,44 +1,13 @@
 {
     "m_SelectedDeviceId": "fab4f3da",
-    "m_SelectedPackage": {
-        "deviceId": "fab4f3da",
-        "name": "com.adbreeker.Drawmytrail",
-        "processId": 28072,
+    "m_SelectedProcess": {
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "fab4f3da",
-            "name": "com.adbreeker.Drawmytrail",
-            "processId": 12843,
-            "exited": true
-        },
-        {
-            "deviceId": "fab4f3da",
-            "name": "com.adbreeker.Drawmytrail",
-            "processId": 16366,
-            "exited": true
-        },
-        {
-            "deviceId": "fab4f3da",
-            "name": "com.adbreeker.Drawmytrail",
-            "processId": 19071,
-            "exited": true
-        },
-        {
-            "deviceId": "fab4f3da",
-            "name": "com.adbreeker.Drawmytrail",
-            "processId": 23847,
-            "exited": true
-        },
-        {
-            "deviceId": "fab4f3da",
-            "name": "com.adbreeker.Drawmytrail",
-            "processId": 28072,
-            "exited": false
-        }
-    ],
+    "m_KnownProcessesForSerialization": [],
     "m_Tags": {
         "m_Entries": [
             {
@@ -71,8 +40,11 @@
             }
         ]
     },
+    "m_ExtraWindowState": {
+        "Type": 0,
+        "Height": 0.0
+    },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,
@@ -87,7 +59,7 @@
             true
         ],
         "MemoryGroup": 2,
-        "Behavior": 0
+        "AutoCapture": true
     },
     "m_FilterOptions": {
         "m_Filter": "",
@@ -105,5 +77,28 @@
         "BitRateK": 20000,
         "DisplayIdEnabled": false,
         "DisplayId": ""
-    }
+    },
+    "m_ScreenCaptureSettings": {
+        "Mode": 0,
+        "m_LastSaveLocation": [
+            "D:\\Coding\\GitHub\\DrawMyTrail-UnityGame",
+            "D:\\Coding\\GitHub\\DrawMyTrail-UnityGame"
+        ]
+    },
+    "m_QueryLayoutSettings": {
+        "LastLayoutSaveLocation": "",
+        "LastScreenshotSaveLocation": ""
+    },
+    "m_InputSettings": {
+        "ShiftModifier": false,
+        "SendText": "",
+        "PosixKillSignal": 0,
+        "TargetProcess": {
+            "deviceId": "",
+            "name": "",
+            "processId": 0,
+            "exited": false
+        }
+    },
+    "m_AutoScroll": 2
 }

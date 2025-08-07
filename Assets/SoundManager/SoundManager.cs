@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     private void Awake()
     {
-        if(FindObjectsOfType<SoundManager>().Length > 1)
+        if(FindObjectsByType<SoundManager>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
         }

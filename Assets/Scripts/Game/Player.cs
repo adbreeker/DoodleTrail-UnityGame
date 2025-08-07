@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         wj = gameObject.GetComponent<WheelJoint2D>();
 
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -90,17 +90,17 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             Freeze();
-            FindObjectOfType<GameManager>().LvLCompleted();
+            FindFirstObjectByType<GameManager>().LvLCompleted();
         }
         if (collision.gameObject.tag == "Star")
         {
-            FindObjectOfType<SoundManager>().PlaySound(1);
+            FindFirstObjectByType<SoundManager>().PlaySound(1);
             gameManager.starCollected = true;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Destroyer")
         {
-            GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.velocity, 10.0f);
+            GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.linearVelocity, 10.0f);
             Destroy(playerPointer);
             Destroy(gameObject);
             gameManager.StartCoroutine("LvLFailed", 0.5f);

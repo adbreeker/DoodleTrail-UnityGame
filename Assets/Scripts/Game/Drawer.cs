@@ -30,7 +30,7 @@ public class Drawer : MonoBehaviour
 
     void Start()
     {
-        eventSystem = GameObject.FindObjectOfType<EventSystem>();
+        eventSystem = FindFirstObjectByType<EventSystem>();
     }
 
     void Update()

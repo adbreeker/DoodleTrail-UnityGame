@@ -42,7 +42,7 @@ public class EndlessGameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape) && uiPermision)
         {
-            FindObjectOfType<SoundManager>().PlaySound(0);
+            FindFirstObjectByType<SoundManager>().PlaySound(0);
             Time.timeScale = 0;
             pausePanel.SetActive(true);
         }
@@ -167,7 +167,7 @@ public class EndlessGameManager : MonoBehaviour
 
     IEnumerator LvLFailed(float deley)
     {
-        FindObjectOfType<SoundManager>().PlaySound(2);
+        FindFirstObjectByType<SoundManager>().PlaySound(2);
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
         if(newBest)
@@ -180,20 +180,20 @@ public class EndlessGameManager : MonoBehaviour
     //buttons
     public void UnPauseButton()
     {
-        FindObjectOfType<SoundManager>().PlaySound(0);
+        FindFirstObjectByType<SoundManager>().PlaySound(0);
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void ReturnToMenuButton()
     {
-        FindObjectOfType<SoundManager>().PlaySound(0);
+        FindFirstObjectByType<SoundManager>().PlaySound(0);
         SceneManager.LoadScene("Menu");
     }
 
     public void ReloadButton()
     {
-        FindObjectOfType<SoundManager>().PlaySound(0);
+        FindFirstObjectByType<SoundManager>().PlaySound(0);
         SceneManager.LoadScene("Endless");
     }
 }
