@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2005327661291374422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005327661291374424}
+  - component: {fileID: 5398736500038741038}
+  - component: {fileID: 402580601925276151}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005327661291374424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005327661291374422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5398736500038741038
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005327661291374422}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &402580601925276151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005327661291374422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86193ca1a300ee24eb6e263aa98446f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerPriority: 0
+  _audioPrefab: {fileID: 2793116545925446914, guid: 36b7471f5ea03394db84442f3f6e9592, type: 3}
+  _sounds:
+  - soundClip: {fileID: 8300000, guid: 5e0ef3d2826f38b4a942286e3549b273, type: 3}
+    soundName: ATTACK_BLOWPIPE
+    soundEnum: 0
+  - soundClip: {fileID: 8300000, guid: ae4d81b941f88a94dbe6dbeaff888ade, type: 3}
+    soundName: ATTACK_BOW
+    soundEnum: 1
+  - soundClip: {fileID: 8300000, guid: eaa8f009722dbd346b55438b9150a24b, type: 3}
+    soundName: ATTACK_CANNON
+    soundEnum: 2
+  - soundClip: {fileID: 8300000, guid: a2de2220c0096134e832dcc41fb4bace, type: 3}
+    soundName: ATTACK_LIGHTSABER
+    soundEnum: 3
+  - soundClip: {fileID: 8300000, guid: 757dac7b244e986408c60aad853969c5, type: 3}
+    soundName: ATTACK_MAGIC1
+    soundEnum: 4
+  - soundClip: {fileID: 8300000, guid: 54b25508ad19d214f978dc7d97413547, type: 3}
+    soundName: ATTACK_MAGIC2
+    soundEnum: 5
+  - soundClip: {fileID: 8300000, guid: 2ae56310839d7e2478c932a0049dacec, type: 3}
+    soundName: ATTACK_MAGIC3
+    soundEnum: 6
+  - soundClip: {fileID: 8300000, guid: c9845c52c7c495a46848d2a9d33f9826, type: 3}
+    soundName: ATTACK_PISTOL
+    soundEnum: 7
+  - soundClip: {fileID: 8300000, guid: 7a36f0b973b9baa409b5e905cf924221, type: 3}
+    soundName: ATTACK_REVOLVER
+    soundEnum: 8
+  - soundClip: {fileID: 8300000, guid: a3b8a9823ca371e46bd791432bd501d8, type: 3}
+    soundName: ATTACK_RIFLE
+    soundEnum: 9
+  - soundClip: {fileID: 8300000, guid: 6ae49c6cbc9e0944894829008bc25185, type: 3}
+    soundName: ATTACK_SNIPER
+    soundEnum: 10
+  - soundClip: {fileID: 8300000, guid: a9d351e2a4557de4696d8b4a2ca9b058, type: 3}
+    soundName: ATTACK_SPIN
+    soundEnum: 11
+  - soundClip: {fileID: 8300000, guid: 5283fe357a1435e49bc805b054201fba, type: 3}
+    soundName: ATTACK_SWORD
+    soundEnum: 12
+  - soundClip: {fileID: 8300000, guid: c95b980df4baffd4fbb3fd53bc247fa6, type: 3}
+    soundName: ATTACK_THROW_BLADE
+    soundEnum: 13
+  - soundClip: {fileID: 8300000, guid: 95db2d19f8a5b044ab5671f6bdbe4337, type: 3}
+    soundName: ATTACK_THROW_GRENADE
+    soundEnum: 14
+  - soundClip: {fileID: 8300000, guid: 6c8f96f9cb9d21143abb57237d7eaaa6, type: 3}
+    soundName: EFFECT_BANG
+    soundEnum: 15
+  - soundClip: {fileID: 8300000, guid: 9e09835836413aa4ca90a9f522ecf753, type: 3}
+    soundName: EFFECT_BEEBUZZ1
+    soundEnum: 16
+  - soundClip: {fileID: 8300000, guid: 46a316977a4b19f4db6980dfe3cfd880, type: 3}
+    soundName: EFFECT_BEEBUZZ2
+    soundEnum: 17
+  - soundClip: {fileID: 8300000, guid: 3b5b41b56db6cb14a8c868f4eb1ed267, type: 3}
+    soundName: EFFECT_BLOB
+    soundEnum: 18
+  - soundClip: {fileID: 8300000, guid: efa8a29606232a3499be7d7551710d4f, type: 3}
+    soundName: EFFECT_BUTTON
+    soundEnum: 19
+  - soundClip: {fileID: 8300000, guid: a192da2843955a744a98d367a085bf27, type: 3}
+    soundName: EFFECT_COLLECT
+    soundEnum: 20
+  - soundClip: {fileID: 8300000, guid: 048e5264b424cb64797d570b07c93fe4, type: 3}
+    soundName: EFFECT_EXPLOSION1
+    soundEnum: 21
+  - soundClip: {fileID: 8300000, guid: 4f590926f9940a449bebe33024153376, type: 3}
+    soundName: EFFECT_EXPLOSION2
+    soundEnum: 22
+  - soundClip: {fileID: 8300000, guid: 6445970bdb0a962409a069aba4c7c0ce, type: 3}
+    soundName: EFFECT_KILL1
+    soundEnum: 23
+  - soundClip: {fileID: 8300000, guid: e24b6fb83bd737b4aa5a1916d878acda, type: 3}
+    soundName: EFFECT_KILL2
+    soundEnum: 24
+  - soundClip: {fileID: 8300000, guid: afb1cdc01c899aa4983aa808317fe2c2, type: 3}
+    soundName: EFFECT_KILL3
+    soundEnum: 25
+  - soundClip: {fileID: 8300000, guid: b9529b6258c79284caad8548f0e45b2a, type: 3}
+    soundName: EFFECT_POPUP1
+    soundEnum: 26
+  - soundClip: {fileID: 8300000, guid: 100fddcdf2351bd47a1e9ab9084e4e81, type: 3}
+    soundName: EFFECT_POPUP2
+    soundEnum: 27
+  - soundClip: {fileID: 8300000, guid: 5bb442db81b67344c89f42fcf2123e93, type: 3}
+    soundName: EFFECT_POPUP3
+    soundEnum: 28
+  - soundClip: {fileID: 8300000, guid: 6fa5561f31758cd468102a2ee27ff48b, type: 3}
+    soundName: EFFECT_RELOAD
+    soundEnum: 29
+  - soundClip: {fileID: 8300000, guid: 8b1c6f0c7262b75438cc127c9b618e41, type: 3}
+    soundName: EFFECT_SLIDE_CLOSE
+    soundEnum: 30
+  - soundClip: {fileID: 8300000, guid: 16b4470332b230b419bff61e917167da, type: 3}
+    soundName: EFFECT_SLIDE_OPEN
+    soundEnum: 31
+  - soundClip: {fileID: 8300000, guid: b37113ea1812e1646bf340b24a28d977, type: 3}
+    soundName: EFFECT_VACUUM
+    soundEnum: 32
+  - soundClip: {fileID: 8300000, guid: ee51c5e82b079e44eb0053ad7538cd68, type: 3}
+    soundName: FINISH_LOSE
+    soundEnum: 33
+  - soundClip: {fileID: 8300000, guid: 39dc561ae2a8ba04caf6f58f34b80f99, type: 3}
+    soundName: FINISH_WIN
+    soundEnum: 34
