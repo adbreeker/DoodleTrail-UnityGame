@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        FindFirstObjectByType<SoundManager>().gameObject.GetComponent<AudioSource>().time = 0;
+        SoundManager.Instance.GetComponent<AudioSource>().time = 0;
         if(!PlayerPrefs.HasKey("LvL0Status"))
         {
             PlayerPrefs.SetInt("LvL0Status", 0);
@@ -41,25 +41,25 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLevelSelectPanel()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         LvLSelectPanel.SetActive(true);
     }
 
     public void CloseLevelSelectPanel()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         LvLSelectPanel.SetActive(false);
     }
 
     public void EndlessModeButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         SceneManager.LoadScene("Endless");
     }
 
     public void ExitButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         Application.Quit();
     }
 

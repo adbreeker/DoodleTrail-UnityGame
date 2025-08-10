@@ -59,7 +59,7 @@ public class PlayerEndless : MonoBehaviour
     {
         if (collision.gameObject.tag == "Star")
         {
-            FindFirstObjectByType<SoundManager>().PlaySound(1);
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CATCH);
             gameManager.StarCollected();
             Destroy(collision.gameObject);
         }

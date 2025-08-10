@@ -9,7 +9,7 @@ using System.Linq;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager soundManager;
+    public static SoundManager Instance { get; private set; }
 
     [Serializable]
     public class Sound
@@ -28,21 +28,21 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        if (soundManager == null)
+        if (Instance == null)
         {
-            soundManager = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if (soundManager != this)
+        else if (Instance != this)
         {
-            if(soundManager.managerPriority >= this.managerPriority) 
+            if(Instance.managerPriority >= this.managerPriority) 
             {
                 Destroy(gameObject); 
             }
             else
             {
-                DestroyImmediate(soundManager.gameObject);
-                soundManager = this;
+                DestroyImmediate(Instance.gameObject);
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
         }

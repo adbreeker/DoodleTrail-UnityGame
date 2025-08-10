@@ -38,6 +38,6 @@ public class AudioSourceController : MonoBehaviour
         {
             yield return null;
         }
-        SoundManager.soundManager.DestroyAudioSource(this);
+        SoundManager.Instance.DestroyAudioSource(this);
     }
 }
