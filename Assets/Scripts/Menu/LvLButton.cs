@@ -69,7 +69,7 @@ public class LvLButton : MonoBehaviour
 
     public void LoadLvl()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         MenuManager.LvlSelected = lvl_id;
         SceneManager.LoadScene("Game");
     }

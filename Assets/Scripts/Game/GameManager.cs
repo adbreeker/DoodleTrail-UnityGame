@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            FindFirstObjectByType<SoundManager>().PlaySound(0);
+            SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
             Time.timeScale = 0;
             pausePanel.SetActive(true);
         }
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     //buttons ------------------------------------------------------------------------------------------
     public void StartButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         gameStarted = true;
         startB.gameObject.SetActive(false);
         reloadB.gameObject.SetActive(true);
@@ -79,19 +79,19 @@ public class GameManager : MonoBehaviour
 
     public void ReloadButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UndoButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         drawer.UndoLine();
     }
 
     public void ReverseButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         player.GetComponent<Player>().ReverseForce();
         foreach (ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
         {
@@ -101,26 +101,26 @@ public class GameManager : MonoBehaviour
 
     public void StartModeButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         player.GetComponent<Player>().StartMode *= -1;
     }
 
     public void BackToMenuButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         SceneManager.LoadScene("Menu");
     }
 
     public void UnPauseButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void LoadNextLvLButton()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(0);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         if (Random.Range(1,3) == 1)
         {
             adsManager.GetComponent<InterestialAd>().ShowAd();
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
 
     public void LvLCompleted()
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(3);
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_WIN);
         Time.timeScale = 0;
         if (lvl_id < levels.LevelsCount())
         {
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LvLFailed(float deley)
     {
-        FindFirstObjectByType<SoundManager>().PlaySound(2);
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL);
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
         failPanel.SetActive(true);
