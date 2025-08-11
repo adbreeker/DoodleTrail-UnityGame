@@ -14,6 +14,8 @@ public class BrushBehavior : MonoBehaviour
     {
         edgeCollider = this.GetComponent<EdgeCollider2D>();
         line = this.GetComponent<LineRenderer>();
+
+        edgeCollider.edgeRadius = line.startWidth / 2;
     }
 
     void Update()

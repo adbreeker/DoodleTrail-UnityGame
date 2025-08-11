@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class Drawer : MonoBehaviour
 {
+
     public Camera m_camera;
+
+    [Header("Brush settings:")]
     public GameObject brushPrefab;
+    public Color brushColor = Color.yellow;
+    public float brushWidth = 0.4f;
+
     LineRenderer currentLineRenderer;
     Vector2 lastPos;
 
+    [Header("Current status:")]
     EventSystem eventSystem;
     public int linesCount = 0;
     public bool drawPermision = true;
@@ -31,6 +38,11 @@ public class Drawer : MonoBehaviour
     void Start()
     {
         eventSystem = FindFirstObjectByType<EventSystem>();
+        LineRenderer brushLineRenderer = brushPrefab.GetComponent<LineRenderer>();
+        brushLineRenderer.startColor = brushColor;
+        brushLineRenderer.endColor = brushColor;
+        brushLineRenderer.startWidth = brushWidth;
+        brushLineRenderer.endWidth = brushWidth;
     }
 
     void Update()
