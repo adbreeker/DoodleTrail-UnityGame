@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c1190daf6f8815d409c791bb18fadb3d
+guid: a9735ab5f2d09df43bbb68230eb079f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2525228622022943176
-    second: paperCharacter_0
-  - first:
-      213: -6743911455202505002
-    second: paperCharacter_1
+      213: -4752223020998456911
+    second: fragment6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,23 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paperCharacter_0
+      name: fragment6_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 250
-        height: 250
+        y: 2
+        width: 244
+        height: 127
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83e5caf82f594fcd0800000000000000
-      internalID: -2525228622022943176
+      spriteID: 1b904fb3756bc0eb0800000000000000
+      internalID: -4752223020998456911
       vertices: []
       indices: 
       edges: []
@@ -167,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d13be6cd3e852e4aaa958a584b286ce
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -177,8 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      paperCharacter_0: -2525228622022943176
-      paperCharacter_1: -6743911455202505002
+      fragment6_0: -4752223020998456911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

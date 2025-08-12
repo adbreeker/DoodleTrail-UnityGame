@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: c1190daf6f8815d409c791bb18fadb3d
+guid: d5b73b1764727ed4ebd46bcd36cef2f6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2525228622022943176
-    second: paperCharacter_0
+      213: 6900557881410430379
+    second: fragment4_0
   - first:
-      213: -6743911455202505002
-    second: paperCharacter_1
+      213: 8209243770279092760
+    second: fragment4_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,23 +142,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paperCharacter_0
+      name: fragment4_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 250
-        height: 250
+        x: 45
+        y: 229
+        width: 36
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83e5caf82f594fcd0800000000000000
-      internalID: -2525228622022943176
+      spriteID: ba5ad7915d4b3cf50800000000000000
+      internalID: 6900557881410430379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fragment4_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 151
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 812e212f6b71de170800000000000000
+      internalID: 8209243770279092760
       vertices: []
       indices: 
       edges: []
@@ -167,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d13be6cd3e852e4aaa958a584b286ce
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -177,8 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      paperCharacter_0: -2525228622022943176
-      paperCharacter_1: -6743911455202505002
+      fragment4_0: 6900557881410430379
+      fragment4_1: 8209243770279092760
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

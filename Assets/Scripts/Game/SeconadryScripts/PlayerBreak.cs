@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerBreak : MonoBehaviour
 {
     public List<Sprite> fragmentsImages = new List<Sprite>();
-    public Sprite engineFragment;
     public GameObject playerFragmentPrefab;
 
     List<GameObject> fragments;
@@ -25,13 +24,5 @@ public class PlayerBreak : MonoBehaviour
 
             frag_vel = Vector2Extension.Rotate(frag_vel, dispresion);
         }
-
-        //engine
-        GameObject engine = Instantiate(playerFragmentPrefab, center_pos, Quaternion.identity);
-        engine.GetComponent<SpriteRenderer>().sprite = engineFragment;
-        engine.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-        engine.transform.localScale = new Vector3(0.2f,0.2f,0);
-        engine.AddComponent<PolygonCollider2D>();
-        engine.GetComponent<Rigidbody2D>().linearVelocity = player_velocity;
     }
 }

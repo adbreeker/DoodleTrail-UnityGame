@@ -212,15 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragmentsImages:
-  - {fileID: 21300000, guid: 198183b3718eee9438469b5e47fca9b6, type: 3}
-  - {fileID: 21300000, guid: 3341f1cb22c2cd34b81ac0851da93219, type: 3}
-  - {fileID: 21300000, guid: 8543d2026b8d2484b89b62398e660897, type: 3}
-  - {fileID: 21300000, guid: 0a25a0f5ddc6af8449d85ebe892c444c, type: 3}
-  - {fileID: 21300000, guid: 6a139a296afa36144a5656c16e849f57, type: 3}
-  - {fileID: 21300000, guid: 4a6b0d4df6ef0c946b4f5592ad32b746, type: 3}
-  - {fileID: 21300000, guid: 00a596846e2e67341baf88bbfd7396c6, type: 3}
-  - {fileID: 21300000, guid: 7d52cb9acf1dc9a4d8f20ca635e0de4f, type: 3}
-  engineFragment: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  - {fileID: 3244042965860948304, guid: 7c2779eb64e0d5f49a35d7927af83b9f, type: 3}
+  - {fileID: 6996770249430435203, guid: 151c97da79325b14ea1653ea268858b1, type: 3}
+  - {fileID: 9111588607183953199, guid: cd9f20a97c34b90468bc932b5d486b6f, type: 3}
+  - {fileID: 6900557881410430379, guid: d5b73b1764727ed4ebd46bcd36cef2f6, type: 3}
+  - {fileID: 2698635637943280046, guid: 0b963d7c9ce5be64ead8cccc702da425, type: 3}
+  - {fileID: -4752223020998456911, guid: a9735ab5f2d09df43bbb68230eb079f1, type: 3}
+  - {fileID: 8528019572761431470, guid: dc8308e19c490974eb6cb0799695e875, type: 3}
+  - {fileID: 658439537154724303, guid: 0071c491d7c70d34886e68c9124c2e88, type: 3}
   playerFragmentPrefab: {fileID: 7546507417519781161, guid: d5ad5416bfc7eae40a428578bbcdf9ef, type: 3}
 --- !u!1 &3423804218497273813
 GameObject:
@@ -298,9 +297,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
