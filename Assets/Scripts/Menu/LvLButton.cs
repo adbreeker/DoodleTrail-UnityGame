@@ -9,10 +9,10 @@ public class LvLButton : MonoBehaviour
 {
     int lvl_id;
     int lvl_status;
-    public TextMeshProUGUI button_lvl_text;
+    [SerializeField] GameObject _lockIcon;
+    [SerializeField] TextMeshProUGUI _levelText;
     public GameObject star1, star2, star3;
-
-    public Sprite openButton, lockedButton;
+    [SerializeField] Sprite _filledStar;
 
     public void SetUpLvLButton(int id)
     {
@@ -35,8 +35,8 @@ public class LvLButton : MonoBehaviour
     void SetUnlockedButton()
     {
         gameObject.GetComponent<Button>().interactable = true;
-        gameObject.GetComponent<Image>().sprite = openButton;
-        button_lvl_text.text = lvl_id.ToString();
+        _lockIcon.SetActive(false);
+        _levelText.text = lvl_id.ToString();
 
         star1.SetActive(true);
         star2.SetActive(true);
@@ -44,23 +44,23 @@ public class LvLButton : MonoBehaviour
 
         if(lvl_status >= 1)
         {
-            star1.GetComponent<Image>().color = new Color(1, 1, 0, 1);
+            star1.GetComponent<Image>().sprite = _filledStar;
         }
         if (lvl_status >= 2)
         {
-            star2.GetComponent<Image>().color = new Color(1, 1, 0, 1);
+            star2.GetComponent<Image>().sprite = _filledStar;
         }
         if (lvl_status == 3)
         {
-            star3.GetComponent<Image>().color = new Color(1, 1, 0, 1);
+            star3.GetComponent<Image>().sprite = _filledStar;
         }
     }
 
     void SetLockedButton()
     {
         gameObject.GetComponent<Button>().interactable = false;
-        gameObject.GetComponent<Image>().sprite = lockedButton;
-        button_lvl_text.text = "";
+        _lockIcon.SetActive(true);
+        _levelText.text = "";
 
         star1.SetActive(false);
         star2.SetActive(false);

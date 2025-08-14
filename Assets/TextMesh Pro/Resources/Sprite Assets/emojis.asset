@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
   m_Name: emojis
   m_EditorClassIdentifier: 
-  hashCode: -228469577
-  material: {fileID: 6964901215248829824}
-  materialHashCode: 0
   m_Version: 1.1.0
   m_FaceInfo:
     m_FaceIndex: 0
@@ -22,6 +19,7 @@ MonoBehaviour:
     m_StyleName: 
     m_PointSize: 0
     m_Scale: 0
+    m_UnitsPerEM: 0
     m_LineHeight: 0
     m_AscentLine: 0
     m_CapLine: 0
@@ -37,6 +35,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
+  m_Material: {fileID: 6964901215248829824}
   spriteSheet: {fileID: 2800000, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
@@ -44,98 +43,82 @@ MonoBehaviour:
     m_GlyphIndex: 0
     m_Scale: 1
     m_Name: emojis_0
-    m_HashCode: 304735480
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 1
     m_Scale: 1
     m_Name: emojis_1
-    m_HashCode: 304735481
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 2
     m_Scale: 1
     m_Name: emojis_2
-    m_HashCode: 304735482
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 3
     m_Scale: 1
     m_Name: emojis_3
-    m_HashCode: 304735483
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 4
     m_Scale: 1
     m_Name: emojis_4
-    m_HashCode: 304735484
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 5
     m_Scale: 1
     m_Name: emojis_5
-    m_HashCode: 304735485
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 6
     m_Scale: 1
     m_Name: emojis_6
-    m_HashCode: 304735486
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 7
     m_Scale: 1
     m_Name: emojis_7
-    m_HashCode: 304735487
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 8
     m_Scale: 1
     m_Name: emojis_8
-    m_HashCode: 304735472
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 9
     m_Scale: 1
     m_Name: emojis_9
-    m_HashCode: 304735473
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 10
     m_Scale: 1
     m_Name: emojis_10
-    m_HashCode: 1466336297
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 11
     m_Scale: 1
     m_Name: emojis_11
-    m_HashCode: 1466336296
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 12
     m_Scale: 1
     m_Name: emojis_12
-    m_HashCode: 1466336299
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 13
     m_Scale: 1
     m_Name: emojis_13
-    m_HashCode: 1466336298
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 14
     m_Scale: 1
     m_Name: emojis_14
-    m_HashCode: 1466336301
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 15
     m_Scale: 1
     m_Name: emojis_15
-    m_HashCode: 1466336300
-  m_SpriteGlyphTable:
+  m_GlyphTable:
   - m_Index: 0
     m_Metrics:
       m_Width: 119
@@ -150,6 +133,7 @@ MonoBehaviour:
       m_Height: 111
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -7268019229646493151, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 1
     m_Metrics:
@@ -165,6 +149,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -4212664233109456160, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 2
     m_Metrics:
@@ -180,6 +165,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 6570990888304444855, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 3
     m_Metrics:
@@ -195,6 +181,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 1902788056962746792, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 4
     m_Metrics:
@@ -210,6 +197,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 7560273781537512081, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 5
     m_Metrics:
@@ -225,6 +213,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -2082026927417096878, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 6
     m_Metrics:
@@ -240,6 +229,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -2355210058953683435, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 7
     m_Metrics:
@@ -255,6 +245,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -2986073820518818095, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 8
     m_Metrics:
@@ -270,6 +261,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -1381426061524317253, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 9
     m_Metrics:
@@ -285,6 +277,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 4468506237299979643, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 10
     m_Metrics:
@@ -300,6 +293,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 6800190008319901956, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 11
     m_Metrics:
@@ -315,6 +309,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -6985744981876308950, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 12
     m_Metrics:
@@ -330,6 +325,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: 9054944122505830798, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 13
     m_Metrics:
@@ -345,6 +341,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -3864129374969667257, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 14
     m_Metrics:
@@ -360,6 +357,7 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -3370877302900624716, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   - m_Index: 15
     m_Metrics:
@@ -375,25 +373,30 @@ MonoBehaviour:
       m_Height: 120
     m_Scale: 1
     m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
     sprite: {fileID: -2000316621814273970, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
 --- !u!21 &6964901215248829824
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TextMeshPro/Sprite
   m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -401,6 +404,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: fda9361c6e530b9468ecd01e8f27e514, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _ColorMask: 15
     - _CullMode: 0
@@ -414,3 +418,4 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
