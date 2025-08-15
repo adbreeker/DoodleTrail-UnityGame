@@ -11,8 +11,8 @@ public class Drawer : MonoBehaviour
 
     [Header("Brush settings:")]
     public GameObject brushPrefab;
-    public Color brushColor = Color.yellow;
-    public float brushWidth = 0.4f;
+    public Color brushColor = new Color(0.233f, 0.484f, 0.736f, 1.000f);
+    public float brushWidth = 0.3f;
 
     LineRenderer currentLineRenderer;
     Vector2 lastPos;
@@ -24,6 +24,8 @@ public class Drawer : MonoBehaviour
 
     List<GameObject> lines = new List<GameObject>();
     GameObject currentLine;
+
+    AudioSourceController _drawingSound;
 
 
     private bool IsPointerOverUIObject()
@@ -65,11 +67,20 @@ public class Drawer : MonoBehaviour
         {
             PointToMousePos();
             DrawingAfterStart();
+            if(_drawingSound == null)
+            {
+                _drawingSound = SoundManager.Instance.PlaySound(SoundEnum.EFFECT_WRITE, true);
+            }
         }
         else
         {
             currentLineRenderer = null;
             currentLine = null;
+            if (_drawingSound != null)
+            {
+                SoundManager.Instance.DestroyAudioSource(_drawingSound);
+                _drawingSound = null;
+            }
         }
     }
 

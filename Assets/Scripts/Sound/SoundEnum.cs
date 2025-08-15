@@ -1,6 +1,11 @@
 public enum SoundEnum
 {
+    EFFECT_CANNON,
     EFFECT_CATCH,
+    EFFECT_ENGINE,
+    EFFECT_SCISSORS,
+    EFFECT_TEAR,
+    EFFECT_WRITE,
     FINISH_FAIL,
     FINISH_WIN,
     UI_BUTTON

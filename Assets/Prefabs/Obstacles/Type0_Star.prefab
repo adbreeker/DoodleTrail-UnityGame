@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7331501556729024860}
   - component: {fileID: 7331501556729024851}
   - component: {fileID: 5973830632165234600}
-  - component: {fileID: -7914244686999159735}
-  - component: {fileID: -8302171341288032320}
+  - component: {fileID: 62707019897481934}
   m_Layer: 0
   m_Name: Type0_Star
   m_TagString: Star
@@ -156,7 +155,7 @@ PolygonCollider2D:
       - {x: 0.015, y: -0.445}
       - {x: 0.325, y: -0.445}
   m_UseDelaunayMesh: 0
---- !u!114 &-7914244686999159735
+--- !u!114 &62707019897481934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,19 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7331501556729024850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf728d6f2b19104caa806baa905ee45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-8302171341288032320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7331501556729024850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ace72c5763364ba4a997fce930896b91, type: 3}
+  m_Script: {fileID: 11500000, guid: b8bfcb01e04c5df45ab2e82be8ab1b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleName: Star

@@ -55,12 +55,14 @@ public class Player : MonoBehaviour
         {
             GetComponent<CircleCollider2D>().sharedMaterial = engineFriction;
             wj.useMotor = true;
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_ENGINE);
         }
         if (StartMode == -1)
         {
             GetComponent<CircleCollider2D>().sharedMaterial = cannonFriction;
             wj.useMotor = false;
             rb.AddForce(direction * 50, ForceMode2D.Impulse);
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CANNON);
         }
     }
 

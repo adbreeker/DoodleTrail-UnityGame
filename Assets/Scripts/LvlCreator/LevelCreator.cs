@@ -52,7 +52,7 @@ public class LevelCreator : MonoBehaviour
             int obstacleTypeIndex = 0;
             foreach(GameObject obstaclePrefab in obstaclesPrefabs)
             {
-                if(lvlMember.GetComponent<ObstacleInfo>().obstacleName == obstaclePrefab.GetComponent<ObstacleInfo>().obstacleName || lvlMember.gameObject == baseStar)
+                if(lvlMember.GetComponent<Obstacle>().obstacleName == obstaclePrefab.GetComponent<Obstacle>().obstacleName || lvlMember.gameObject == baseStar)
                 {
                     obstaclesTypes[obstacleTypeIndex]++;
                     obstacleNames.Add(obstaclePrefab.name + obstaclesTypes[obstacleTypeIndex].ToString());

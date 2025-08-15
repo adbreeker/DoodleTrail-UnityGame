@@ -145,15 +145,30 @@ MonoBehaviour:
   managerPriority: 0
   _audioPrefab: {fileID: 2793116545925446914, guid: 36b7471f5ea03394db84442f3f6e9592, type: 3}
   _sounds:
+  - soundClip: {fileID: 8300000, guid: 36cd1e7c1c1bd364f89aee0a09706e22, type: 3}
+    soundName: EFFECT_CANNON
+    soundEnum: 0
   - soundClip: {fileID: 8300000, guid: 0d372c584fca37046b4f281f6841610d, type: 3}
     soundName: EFFECT_CATCH
-    soundEnum: 0
+    soundEnum: 1
+  - soundClip: {fileID: 8300000, guid: 2de4aa67eab3375449c9c80489ba7762, type: 3}
+    soundName: EFFECT_ENGINE
+    soundEnum: 2
+  - soundClip: {fileID: 8300000, guid: b96ceb09b01fb8541ac5b7e8944868f5, type: 3}
+    soundName: EFFECT_SCISSORS
+    soundEnum: 3
+  - soundClip: {fileID: 8300000, guid: 5ac3138e43f43364790cf076a5fdf0cd, type: 3}
+    soundName: EFFECT_TEAR
+    soundEnum: 4
+  - soundClip: {fileID: 8300000, guid: 15ed8ac3bad31f641baf26833a07ae66, type: 3}
+    soundName: EFFECT_WRITE
+    soundEnum: 5
   - soundClip: {fileID: 8300000, guid: 72f677d389544fa459c5787215686a91, type: 3}
     soundName: FINISH_FAIL
-    soundEnum: 1
+    soundEnum: 6
   - soundClip: {fileID: 8300000, guid: 15f5b556358d4da4782159957c58d85c, type: 3}
     soundName: FINISH_WIN
-    soundEnum: 2
+    soundEnum: 7
   - soundClip: {fileID: 8300000, guid: 88478a8a8618e8b4cb0b2da698d23a6a, type: 3}
     soundName: UI_BUTTON
-    soundEnum: 3
+    soundEnum: 8

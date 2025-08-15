@@ -54,6 +54,7 @@ public class LC_TestGameManager : MonoBehaviour
     //buttons ------------------------------------------------------------------------------------------
     public void StartButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         startB.gameObject.SetActive(false);
         reloadB.gameObject.SetActive(true);
         reverseB.interactable = false;
@@ -63,16 +64,19 @@ public class LC_TestGameManager : MonoBehaviour
 
     public void ReloadButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UndoButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         drawer.UndoLine();
     }
 
     public void ReverseButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         player.GetComponent<Player>().ReverseForce();
         foreach (ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
         {
@@ -82,27 +86,15 @@ public class LC_TestGameManager : MonoBehaviour
 
     public void StartModeButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         player.GetComponent<Player>().StartMode *= -1;
     }
 
 
     public void UnPauseButton()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
         pausePanel.SetActive(false);
         Time.timeScale = 1;
-    }
-
-
-    // game -----------------------------------------------------------------------------------------------
-
-    public void LvLCompleted()
-    {
-        Time.timeScale = 0;
-
-        startB.interactable = false;
-        reloadB.interactable = false;
-        undoB.interactable = false;
-        reverseB.interactable = false;
-        startModeB.interactable = false;
     }
 }

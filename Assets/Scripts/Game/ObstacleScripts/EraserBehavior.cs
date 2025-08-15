@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EraserBehavior : MonoBehaviour
+public class EraserBehavior : Obstacle
 {
+    [Header("Eraser settings")]
     public float speed;
 
     int moveCounter = 0;
@@ -44,10 +45,5 @@ public class EraserBehavior : MonoBehaviour
             moveCounter = -100;
             speed *= -1;
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 }

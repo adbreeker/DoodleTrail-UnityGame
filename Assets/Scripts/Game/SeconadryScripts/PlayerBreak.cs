@@ -11,6 +11,7 @@ public class PlayerBreak : MonoBehaviour
     List<GameObject> fragments;
     public void Break(Vector3 center_pos, Vector2 player_velocity, float dispresion)
     {
+        StartCoroutine(TearingSound(center_pos));
         //circle fragments
         fragments = new List<GameObject>();
         Vector2 frag_vel = Vector2Extension.Rotate(player_velocity, -(fragmentsImages.Count/2) * dispresion);
@@ -23,6 +24,15 @@ public class PlayerBreak : MonoBehaviour
             fragments.Add(fragment);
 
             frag_vel = Vector2Extension.Rotate(frag_vel, dispresion);
+        }
+    }
+
+    IEnumerator TearingSound(Vector3 pos)
+    {
+        for(int i=0; i<4; i++)
+        {
+            SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_TEAR, pos, true);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }
