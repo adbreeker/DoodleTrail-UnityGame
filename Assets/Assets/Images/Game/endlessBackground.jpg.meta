@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6f4b148da39f0e246b17697ec9698f3d
+guid: ed8aba226d1f88c4f8bd735ad38b077f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7059245495682053050
-    second: button7_0
+      213: -3666884473917519839
+    second: menuBackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,13 +40,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -139,23 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button7_0
+      name: endlessBackground_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 67
-        height: 67
+        width: 2629
+        height: 1753
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab3b768706a77f160800000000000000
-      internalID: 7059245495682053050
+      spriteID: 12840cbbffb9c1dc0800000000000000
+      internalID: -3666884473917519839
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e5950fbb93e236c4f9680c6c25338b82
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button7_0: 7059245495682053050
+      endlessBackground_0: -3666884473917519839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

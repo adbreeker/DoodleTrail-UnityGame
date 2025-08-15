@@ -140,9 +140,9 @@ public class EndlessGameManager : MonoBehaviour
 
         scoreCounter.text = "Score:\n"
             + ((int)distance).ToString() + " m x " + starsCollected.ToString() +
-            "<sprite=0>\n<color=yellow>" +  score;
-        scorePause.text = "Current score:\n<color=yellow>" + (int)distance * starsCollected;
-        scoreFail.text= "Failed with score:\n<color=yellow>" + (int)distance * starsCollected;
+            " <sprite=0>\n<color=orange>" +  score;
+        scorePause.text = "Current score:\n<color=orange>" + (int)distance * starsCollected;
+        scoreFail.text= "with score:\n<color=orange>" + (int)distance * starsCollected;
 
         if(!PlayerPrefs.HasKey("BestScore"))
         {
@@ -156,7 +156,7 @@ public class EndlessGameManager : MonoBehaviour
                 PlayerPrefs.SetInt("BestScore", score);
             }
 
-            bestScore.text = "Best Score:\n<color=yellow>" + PlayerPrefs.GetInt("BestScore");
+            bestScore.text = "Best Score:\n<color=orange>" + PlayerPrefs.GetInt("BestScore");
         }
     }
 
