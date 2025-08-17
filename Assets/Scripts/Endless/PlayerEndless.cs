@@ -35,7 +35,7 @@ public class PlayerEndless : MonoBehaviour
     {
         if (transform.position.y < -20)
         {
-            gameManager.StartCoroutine("LvLFailed", 0f);
+            gameManager.FailGame(0f);
         }
     }
 
@@ -68,7 +68,7 @@ public class PlayerEndless : MonoBehaviour
             GetComponentInChildren<PlayerBreak>().Break(transform.position, rb.linearVelocity, 10.0f);
             Destroy(playerPointer);
             Destroy(gameObject);
-            gameManager.StartCoroutine("LvLFailed", 0.5f);
+            gameManager.FailGame(0.5f);
         }
     }
 

@@ -21,6 +21,7 @@ public class EndlessGameManager : MonoBehaviour
     int starsCollected = 0;
 
     bool newBest = false;
+    bool gameFailed = false;
 
   
 
@@ -165,6 +166,15 @@ public class EndlessGameManager : MonoBehaviour
         starsCollected++;
     }
 
+    public void FailGame(float deley)
+    {
+        if(!gameFailed)
+        {
+            gameFailed = true;
+            StartCoroutine("LvLFailed", deley);
+        }
+    }
+
     IEnumerator LvLFailed(float deley)
     {
         SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL);
@@ -172,7 +182,7 @@ public class EndlessGameManager : MonoBehaviour
         Time.timeScale = 0;
         if(newBest)
         {
-            scoreFail.text += "\nNew Best!";
+            scoreFail.text += " New Best!";
         }
         failPanel.SetActive(true);
     }
