@@ -49,7 +49,7 @@ public class Drawer : MonoBehaviour
 
     void Update()
     {
-        if(!IsPointerOverUIObject() && drawPermision && Time.timeScale != 0)
+        if(drawPermision && Time.timeScale != 0)
         {
             Drawing();
             DestroyEmptyLines();
@@ -58,12 +58,12 @@ public class Drawer : MonoBehaviour
 
     void Drawing()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !IsPointerOverUIObject())
         {
             CreateNewLine();
             CreateBrush();
         }
-        else if (Input.GetKey(KeyCode.Mouse0))
+        else if (Input.GetKey(KeyCode.Mouse0) && currentLineRenderer != null)
         {
             PointToMousePos();
             DrawingAfterStart();
