@@ -10,38 +10,74 @@ public class BrushBehavior : MonoBehaviour
     EdgeCollider2D edgeCollider;
     LineRenderer line;
 
+    bool _updateCollider = true;
+
     void Awake()
     {
         edgeCollider = this.GetComponent<EdgeCollider2D>();
         line = this.GetComponent<LineRenderer>();
 
         edgeCollider.edgeRadius = line.startWidth / 2;
+
+        _updateCollider = true;
     }
 
     void Update()
     {
-        SetEdgeCollider(line);
+
         if(SceneManager.GetActiveScene().name == "Endless")
         {
             EndlessBehaviors();
         }
 
-        GetComponent<CircleCollider2D>().offset = line.GetPosition(0);
+        if(_updateCollider)
+        {
+            SetEdgeCollider(line);
+            GetComponent<CircleCollider2D>().offset = line.GetPosition(line.positionCount / 2);
+        }
     }
 
 
     void SetEdgeCollider(LineRenderer lineRenderer)
     {
+        Debug.Log("Updating EdgeCollider");
         List<Vector2> edges = new List<Vector2>();
 
         for(int point = 0; point < lineRenderer.positionCount; point++)
         {
-            Vector3 lineRendererPoint = lineRenderer.GetPosition(point);
-            edges.Add(new Vector2(lineRendererPoint.x, lineRendererPoint.y));
+
+            Vector2 edgePoint = lineRenderer.GetPosition(point);
+
+            //Checking for no collision mask
+            if (Physics2D.OverlapPoint(edgePoint, LayerMask.GetMask("NoCollisionMask")))
+            {
+                for(int backsidePoint = lineRenderer.positionCount - 1; backsidePoint > point; backsidePoint--)
+                {
+                    edgePoint = lineRenderer.GetPosition(backsidePoint);
+                    if (Physics2D.OverlapPoint(edgePoint, LayerMask.GetMask("NoCollisionMask")))
+                    {
+                        break;
+                    }
+                    edges.Add(edgePoint);
+                }
+                break;
+            }
+
+            edges.Add(edgePoint);
         }
 
-        edgeCollider.SetPoints(edges);
-        edgeCollider.offset = new Vector2(0, 0);
+        if(edges.Count >= 2)
+        {
+            edgeCollider.SetPoints(edges);
+            edgeCollider.offset = new Vector2(0, 0);
+        }
+    }
+
+    public void StopUpdatingCollider()
+    {
+        _updateCollider = false;
+        SetEdgeCollider(line);
+        GetComponent<CircleCollider2D>().offset = line.GetPosition(line.positionCount / 2);
     }
 
 

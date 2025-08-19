@@ -14,6 +14,7 @@ public class Drawer : MonoBehaviour
     public Color brushColor = new Color(0.233f, 0.484f, 0.736f, 1.000f);
     public float brushWidth = 0.3f;
 
+    BrushBehavior currentBrush;
     LineRenderer currentLineRenderer;
     Vector2 lastPos;
 
@@ -54,6 +55,19 @@ public class Drawer : MonoBehaviour
             Drawing();
             DestroyEmptyLines();
         }
+        else
+        {
+            if (_drawingSound != null)
+            {
+                SoundManager.Instance.DestroyAudioSource(_drawingSound);
+                _drawingSound = null;
+            }
+            if (currentBrush != null)
+            {
+                currentBrush.StopUpdatingCollider();
+                currentBrush = null;
+            }
+        }
     }
 
     void Drawing()
@@ -74,6 +88,11 @@ public class Drawer : MonoBehaviour
         }
         else
         {
+            if(currentBrush != null)
+            {
+                currentBrush.StopUpdatingCollider();
+                currentBrush = null;
+            }
             currentLineRenderer = null;
             currentLine = null;
             if (_drawingSound != null)
@@ -93,8 +112,10 @@ public class Drawer : MonoBehaviour
 
     void CreateBrush()
     {
+
         GameObject brushInstance = Instantiate(brushPrefab, currentLine.transform);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
+        currentBrush = brushInstance.GetComponent<BrushBehavior>();
 
         //because you gotta have 2 points to start a line renderer, 
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
@@ -139,6 +160,10 @@ public class Drawer : MonoBehaviour
     {
         if(currentLineRenderer != null && Time.timeScale != 0)
         {
+            if(currentBrush != null)
+            {
+                currentBrush.StopUpdatingCollider();
+            }
             CreateBrush();
         }
     }
