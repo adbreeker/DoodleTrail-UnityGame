@@ -156,12 +156,7 @@ MonoBehaviour:
   starCollected: 0
   noMoreLines: 1
   gameStarted: 0
-  obsaclePrefabs:
-  - {fileID: 7331501556729024850, guid: ae9ee46efc1dd0a49bbe4d78c6d57562, type: 3}
-  - {fileID: 6503139243636457730, guid: c2c6e6d1157e68f40af9ff9ae0051e33, type: 3}
-  - {fileID: 4961070408665788052, guid: 1cda4f74035b13b4db7da145bccfbdc3, type: 3}
-  - {fileID: 8953963404938534264, guid: 13779f2ad56639144b5aa3914453c69d, type: 3}
-  - {fileID: 3413608412178953677, guid: 7a0d6ad3140065046818617c7b641bab, type: 3}
+  obstaclesListSO: {fileID: 11400000, guid: 2d102cf64d8385448950d097aad09188, type: 2}
   startB: {fileID: 1635752934}
   reloadB: {fileID: 1173434217}
   undoB: {fileID: 1260460783}
@@ -496,7 +491,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1955352823
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fb3339fd47bfd8248ab6a682cf797732, type: 3}
   m_Color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}

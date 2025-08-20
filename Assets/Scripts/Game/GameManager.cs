@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool starCollected = false;
     [HideInInspector] public bool noMoreLines = true;
     [HideInInspector] public bool gameStarted = false;
-    public List<GameObject> obsaclePrefabs = new List<GameObject>();
+    public ObstaclesListSO obstaclesListSO;
 
     //ui
     public Button startB, reloadB, undoB, reverseB, startModeB;
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         //obstacles:
         foreach (Levels.Obstacle obstacle in levels.getLevel(lvl_id).obstacles)
         {
-            Instantiate(obsaclePrefabs[obstacle.type], obstacle.position, obstacle.rotation);
+            Instantiate(obstaclesListSO.obstacles[obstacle.type], obstacle.position, obstacle.rotation);
         }
     }
 

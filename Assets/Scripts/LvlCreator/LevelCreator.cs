@@ -12,7 +12,7 @@ public class LevelCreator : MonoBehaviour
     public GameObject finishGround;
     public GameObject baseStar;
 
-    public List<GameObject> obstaclesPrefabs = new List<GameObject>();
+    public ObstaclesListSO obstaclesListSO;
 
     public Transform obstacleHolder;
 
@@ -44,13 +44,13 @@ public class LevelCreator : MonoBehaviour
             lvlMethod += "Quaternion.Euler(0,0," + ConvertToFloatString(finishGround.transform.rotation.eulerAngles.z) + "));\n\n";
         }
 
-        int[] obstaclesTypes = Enumerable.Repeat(0, obstaclesPrefabs.Count).ToArray();
+        int[] obstaclesTypes = Enumerable.Repeat(0, obstaclesListSO.obstacles.Count).ToArray();
         List<string> obstacleNames = new List<string>();
 
         foreach (Transform lvlMember in obstacleHolder)
         {
             int obstacleTypeIndex = 0;
-            foreach(GameObject obstaclePrefab in obstaclesPrefabs)
+            foreach(GameObject obstaclePrefab in obstaclesListSO.obstacles)
             {
                 if(lvlMember.GetComponent<Obstacle>().obstacleName == obstaclePrefab.GetComponent<Obstacle>().obstacleName || lvlMember.gameObject == baseStar)
                 {
@@ -125,7 +125,7 @@ class LevelCreatorEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("startingGround"), new GUIContent("Starting Ground"), false);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("finishGround"), new GUIContent("Finish Ground"), false);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("baseStar"), new GUIContent("Base Star"), false);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("obstaclesPrefabs"), new GUIContent("Obstacle Prefabs"), true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("obstaclesListSO"), new GUIContent("Obstacle Prefabs"), true);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("obstacleHolder"), new GUIContent("Obstacle Holder"), true);
 
         GUILayout.Space(20f);
@@ -210,7 +210,7 @@ class LevelCreatorEditor : Editor
 
         for(int i = 1; i <level.obstacles.Length; i++)
         {
-            Instantiate(script.obstaclesPrefabs[level.obstacles[i].type], level.obstacles[i].position, level.obstacles[i].rotation, script.obstacleHolder);
+            Instantiate(script.obstaclesListSO.obstacles[level.obstacles[i].type], level.obstacles[i].position, level.obstacles[i].rotation, script.obstacleHolder);
         }
     }
 

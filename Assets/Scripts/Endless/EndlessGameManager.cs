@@ -9,7 +9,7 @@ public class EndlessGameManager : MonoBehaviour
     public GameObject player;
     public Camera cam;
     public Drawer drawer;
-    public List<GameObject> obstaclePrefabs = new List<GameObject>();
+    public ObstaclesListSO obstaclesListSO;
     public List<Transform> obstacleSpawnPoints = new List<Transform>();
 
     public GameObject pausePanel, failPanel;
@@ -75,14 +75,14 @@ public class EndlessGameManager : MonoBehaviour
             if(player.transform.position.x >= nextObstacleOn)
             {
                 nextObstacleOn = distance + Random.Range(20f, 40f);
-                int howMany = Random.Range(1, 4);
+                int howMany = Random.Range(2, 3);
                 if(distance > 200)
                 {
-                    howMany = Random.Range(2, 4);
+                    howMany = 3;
                 }
                 if(distance > 800)
                 {
-                    howMany = Random.Range(2, 5);
+                    howMany = Random.Range(3,4);
                 }
                 int[] positions = RandomExtensions.getUniqueRandomArray(0, obstacleSpawnPoints.Count, howMany);
 
@@ -99,14 +99,14 @@ public class EndlessGameManager : MonoBehaviour
             int obsType;
             if (type==null)
             {
-                obsType = Random.Range(0, obstaclePrefabs.Count);
+                obsType = Random.Range(0, obstaclesListSO.obstacles.Count);
             }
             else
             {
                 obsType = (int)type;
             }
 
-            Instantiate(obstaclePrefabs[obsType], obstacleSpawnPoints[positions[i]].position, Quaternion.identity);
+            Instantiate(obstaclesListSO.obstacles[obsType], obstacleSpawnPoints[positions[i]].position, Quaternion.identity);
             if(obsType == 0)
             {
                 break;
