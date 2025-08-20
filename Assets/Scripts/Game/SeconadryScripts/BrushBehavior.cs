@@ -40,7 +40,6 @@ public class BrushBehavior : MonoBehaviour
 
     void SetEdgeCollider(LineRenderer lineRenderer)
     {
-        Debug.Log("Updating EdgeCollider");
         List<Vector2> edges = new List<Vector2>();
 
         for(int point = 0; point < lineRenderer.positionCount; point++)

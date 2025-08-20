@@ -47,6 +47,9 @@ TagManager:
   - name: Background
     uniqueID: 2339614473
     locked: 0
+  - name: VFX
+    uniqueID: 3116817463
+    locked: 0
   - name: Brush
     uniqueID: 3118007757
     locked: 0
