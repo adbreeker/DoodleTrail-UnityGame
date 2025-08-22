@@ -8,7 +8,7 @@ PhysicsMaterial2D:
   m_PrefabAsset: {fileID: 0}
   m_Name: CannonFriction
   serializedVersion: 2
-  friction: 5
+  friction: 2
   bounciness: 0
-  m_FrictionCombine: 4
+  m_FrictionCombine: 1
   m_BounceCombine: 3

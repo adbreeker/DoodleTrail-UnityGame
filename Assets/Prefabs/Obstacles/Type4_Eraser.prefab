@@ -221,3 +221,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleName: Eraser
   speed: 0.05
+  range: 75

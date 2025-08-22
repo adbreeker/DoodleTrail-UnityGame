@@ -6,6 +6,7 @@ public class EraserBehavior : Obstacle
 {
     [Header("Eraser settings")]
     public float speed;
+    public int range = 100;
 
     int moveCounter = 0;
 
@@ -40,9 +41,9 @@ public class EraserBehavior : Obstacle
         moveCounter++;
         transform.position += transform.right * speed;
 
-        if (moveCounter == 100)
+        if (moveCounter == range)
         {
-            moveCounter = -100;
+            moveCounter = -range;
             speed *= -1;
         }
     }
