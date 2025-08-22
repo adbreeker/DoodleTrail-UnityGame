@@ -160,15 +160,18 @@ MonoBehaviour:
   - soundClip: {fileID: 8300000, guid: 5ac3138e43f43364790cf076a5fdf0cd, type: 3}
     soundName: EFFECT_TEAR
     soundEnum: 4
+  - soundClip: {fileID: 8300000, guid: 415077d20cce6ed4f81c00376d3ee50f, type: 3}
+    soundName: EFFECT_VACUUM
+    soundEnum: 5
   - soundClip: {fileID: 8300000, guid: 15ed8ac3bad31f641baf26833a07ae66, type: 3}
     soundName: EFFECT_WRITE
-    soundEnum: 5
+    soundEnum: 6
   - soundClip: {fileID: 8300000, guid: 72f677d389544fa459c5787215686a91, type: 3}
     soundName: FINISH_FAIL
-    soundEnum: 6
+    soundEnum: 7
   - soundClip: {fileID: 8300000, guid: 15f5b556358d4da4782159957c58d85c, type: 3}
     soundName: FINISH_WIN
-    soundEnum: 7
+    soundEnum: 8
   - soundClip: {fileID: 8300000, guid: 88478a8a8618e8b4cb0b2da698d23a6a, type: 3}
     soundName: UI_BUTTON
-    soundEnum: 8
+    soundEnum: 9

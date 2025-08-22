@@ -5,6 +5,7 @@ public enum SoundEnum
     EFFECT_ENGINE,
     EFFECT_SCISSORS,
     EFFECT_TEAR,
+    EFFECT_VACUUM,
     EFFECT_WRITE,
     FINISH_FAIL,
     FINISH_WIN,

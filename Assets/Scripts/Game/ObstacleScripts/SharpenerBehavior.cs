@@ -34,8 +34,13 @@ public class SharpenerBehavior : Obstacle
             float timeElapsed = 0f;
             _VFX.SetActive(true);
 
+            AudioSourceController sound = null;
             while (timeElapsed < pullingDuration)
             {
+                if(sound == null)
+                {
+                    sound = SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_VACUUM, transform.position, true);
+                }
                 float effectiveRange = pullingRange * transform.lossyScale.x * 2f;
 
                 foreach (Collider2D collider in _gravitationArea.affectedObjects)
@@ -59,6 +64,7 @@ public class SharpenerBehavior : Obstacle
                 timeElapsed += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
             }
+            SoundManager.Instance.DestroyAudioSource(sound);
 
             _VFX.SetActive(false);
             yield return new WaitForSeconds(pullingCooldown);
