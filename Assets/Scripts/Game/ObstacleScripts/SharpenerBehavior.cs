@@ -52,6 +52,8 @@ public class SharpenerBehavior : Obstacle
                     float dist = toCenter.magnitude;
 
                     float currentRotatingAngel = rotatingAngle * Mathf.Clamp01(1f - (dist/effectiveRange) + 0.5f);
+                    currentRotatingAngel *= Mathf.Sin(transform.eulerAngles.y * Mathf.Deg2Rad);
+
 
                     Vector2 direction = (Quaternion.Euler(0, 0, currentRotatingAngel) * toCenter.normalized);
 
