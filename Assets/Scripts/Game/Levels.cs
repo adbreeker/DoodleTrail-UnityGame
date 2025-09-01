@@ -748,6 +748,28 @@ public class Levels
         return lvl;
     }
 
+    Level CreateLvL37()
+    {
+        PlayerFinish player = new PlayerFinish(new Vector2(6.55f, 2.30f), Quaternion.identity);
+        PlayerFinish finish = new PlayerFinish(new Vector2(7.00f, -3.81f), Quaternion.identity);
+
+        Obstacle Type0_Star1 = new Obstacle(new Vector2(-5.93f, 0.34f), Quaternion.identity, 0);
+        Obstacle Type3_RotatingWall1 = new Obstacle(new Vector2(2.07f, 2.31f), Quaternion.identity, 3);
+        Obstacle Type3_RotatingWall2 = new Obstacle(new Vector2(2.07f, 2.31f), Quaternion.Euler(0.00f, 0.00f, 90.00f), 3);
+        Obstacle Type5_Sharpener1 = new Obstacle(new Vector2(2.07f, 2.28f), Quaternion.Euler(0.00f, 180.00f, 0.00f), 5);
+        Obstacle Type2_Scissors1 = new Obstacle(new Vector2(2.07f, 4.94f), Quaternion.Euler(0.00f, 0.00f, 180.00f), 2);
+        Obstacle Type2_Scissors2 = new Obstacle(new Vector2(2.07f, -0.50f), Quaternion.identity, 2);
+        Obstacle Type3_RotatingWall3 = new Obstacle(new Vector2(-4.91f, 0.33f), Quaternion.Euler(0.00f, 180.00f, 0.00f), 3);
+        Obstacle Type3_RotatingWall4 = new Obstacle(new Vector2(-4.91f, 0.33f), Quaternion.Euler(0.00f, 180.00f, 90.00f), 3);
+        Obstacle Type4_Eraser1 = new Obstacle(new Vector2(8.66f, -1.38f), Quaternion.Euler(0.00f, 0.00f, 270.00f), 4);
+
+        Obstacle[] obstacles = { Type0_Star1, Type3_RotatingWall1, Type3_RotatingWall2, Type5_Sharpener1, Type2_Scissors1, Type2_Scissors2, Type3_RotatingWall3, Type3_RotatingWall4, Type4_Eraser1 };
+
+        Level lvl = new Level(player, finish, obstacles);
+
+        return lvl;
+    }
+
     //obstacle types: star - 0, wall - 1, scissors - 2, wall rotating - 3, eraser - 4, sharpener - 5
 }
 
