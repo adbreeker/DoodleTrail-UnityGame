@@ -8,19 +8,19 @@ public class SoundType // configuration for AudioSourceBehavior
     public bool IsLooping { get; private set; }
     public bool IsRandomized { get; private set; }
     public bool IsPausable { get; private set; }
+    public bool IsMutable { get; private set; }
 
     // Values
-    public float DestroyTime { get; private set; }
     public Tuple<float, float> PitchRange { get; private set; }
-
     public float VolumeMultiplier { get; private set; }
 
+    // Constructor
     public SoundType(
         bool isPersistent,
         bool isLooping,
         bool isRandomized,
         bool isPausable,
-        float destroyTime,
+        bool isMutable,
         Tuple<float, float> pitchRange,
         float volumeMultiplier)
     {
@@ -28,48 +28,61 @@ public class SoundType // configuration for AudioSourceBehavior
         IsLooping = isLooping;
         IsRandomized = isRandomized;
         IsPausable = isPausable;
-        DestroyTime = destroyTime;
+        IsMutable = isMutable;
         PitchRange = pitchRange;
         VolumeMultiplier = volumeMultiplier;
     }
-}
 
-public class SoundTypes
-{
-    public static SoundType OneShot_SingleUse = new SoundType(
-        isPersistent: false,
-        isLooping: false,
-        isRandomized: false,
-        isPausable: true,
-        destroyTime: 0f,
-        pitchRange: null,
-        volumeMultiplier: 1f
-    );
-    public static SoundType OneShot_MultiUse = new SoundType(
-        isPersistent: false,
-        isLooping: false,
-        isRandomized: true,
-        isPausable: true,
-        destroyTime: 0f,
-        pitchRange: Tuple.Create(0.9f, 1.1f),
-        volumeMultiplier: 1f
-    );
-    public static SoundType OneShot_UI = new SoundType(
-        isPersistent: true,
-        isLooping: false,
-        isRandomized: false,
-        isPausable: false,
-        destroyTime: 0f,
-        pitchRange: null,
-        volumeMultiplier: 1f
-    );
-    public static SoundType Looped = new SoundType(
-        isPersistent: true,
-        isLooping: true,
-        isRandomized: false,
-        isPausable: true,
-        destroyTime: -1f,
-        pitchRange: null,
-        volumeMultiplier: 1f
-    );
+    //Sound Types
+    public static SoundType GetType_OneShotSingleUse()
+    {
+        return new SoundType(
+            isPersistent: false,
+            isLooping: false,
+            isRandomized: false,
+            isPausable: true,
+            isMutable: true,
+            pitchRange: null,
+            volumeMultiplier: 1f
+        );
+    }
+
+    public static SoundType GetType_OneShotMultiUse()
+    {
+        return new SoundType(
+            isPersistent: false,
+            isLooping: false,
+            isRandomized: true,
+            isPausable: true,
+            isMutable: true,
+            pitchRange: Tuple.Create(0.9f, 1.1f),
+            volumeMultiplier: 1f
+        );
+    }
+
+    public static SoundType GetType_OneShotUI()
+    {
+        return new SoundType(
+            isPersistent: true,
+            isLooping: false,
+            isRandomized: false,
+            isPausable: false,
+            isMutable: false,
+            pitchRange: null,
+            volumeMultiplier: 1f
+        );
+    }
+
+    public static SoundType GetType_Looped()
+    {
+        return new SoundType(
+            isPersistent: true,
+            isLooping: true,
+            isRandomized: false,
+            isPausable: true,
+            isMutable: true,
+            pitchRange: null,
+            volumeMultiplier: 1f
+        );
+    }
 }
