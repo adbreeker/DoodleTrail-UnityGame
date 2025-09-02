@@ -43,7 +43,7 @@ public class EndlessGameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape) && uiPermision)
         {
-            SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+            SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
             Time.timeScale = 0;
             pausePanel.SetActive(true);
         }
@@ -177,7 +177,7 @@ public class EndlessGameManager : MonoBehaviour
 
     IEnumerator LvLFailed(float deley)
     {
-        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL);
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL, SoundType.GetType_OneShotSingleUse());
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
         if(newBest)
@@ -190,20 +190,20 @@ public class EndlessGameManager : MonoBehaviour
     //buttons
     public void UnPauseButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void ReturnToMenuButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         SceneManager.LoadScene("Menu");
     }
 
     public void ReloadButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         SceneManager.LoadScene("Endless");
     }
 }

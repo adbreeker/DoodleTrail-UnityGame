@@ -83,7 +83,7 @@ public class Drawer : MonoBehaviour
             DrawingAfterStart();
             if(_drawingSound == null)
             {
-                _drawingSound = SoundManager.Instance.PlaySound(SoundEnum.EFFECT_WRITE, true);
+                _drawingSound = SoundManager.Instance.PlaySound(SoundEnum.EFFECT_WRITE, SoundType.GetType_OneShotMultiUse());
             }
         }
         else

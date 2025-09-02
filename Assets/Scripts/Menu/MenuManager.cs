@@ -41,25 +41,25 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLevelSelectPanel()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         LvLSelectPanel.SetActive(true);
     }
 
     public void CloseLevelSelectPanel()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         LvLSelectPanel.SetActive(false);
     }
 
     public void EndlessModeButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         SceneManager.LoadScene("Endless");
     }
 
     public void ExitButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         Application.Quit();
     }
 

@@ -12,7 +12,7 @@ public class ScissorsBehavior : Obstacle
 
     private void Start()
     {
-        SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_SCISSORS, transform.position, true);
+        SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_SCISSORS, transform.position, SoundType.GetType_OneShotMultiUse());
     }
 
     private void FixedUpdate()
@@ -41,7 +41,7 @@ public class ScissorsBehavior : Obstacle
             if(currentRotation >= 30f)
             {
                 _isClosing = true;
-                SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_SCISSORS, transform.position, true);
+                SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_SCISSORS, transform.position, SoundType.GetType_OneShotMultiUse());
             }
         }
     }

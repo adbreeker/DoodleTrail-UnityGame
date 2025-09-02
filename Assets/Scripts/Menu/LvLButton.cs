@@ -29,9 +29,6 @@ public class LvLButton : MonoBehaviour
         }
     }
 
-    
-   
-
     void SetUnlockedButton()
     {
         gameObject.GetComponent<Button>().interactable = true;
@@ -69,7 +66,7 @@ public class LvLButton : MonoBehaviour
 
     public void LoadLvl()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         MenuManager.LvlSelected = lvl_id;
         SceneManager.LoadScene("Game");
     }

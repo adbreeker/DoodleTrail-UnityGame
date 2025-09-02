@@ -55,14 +55,14 @@ public class Player : MonoBehaviour
         {
             GetComponent<CircleCollider2D>().sharedMaterial = engineFriction;
             wj.useMotor = true;
-            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_ENGINE);
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_ENGINE, SoundType.GetType_OneShotSingleUse());
         }
         if (StartMode == -1)
         {
             GetComponent<CircleCollider2D>().sharedMaterial = cannonFriction;
             wj.useMotor = false;
             rb.AddForce(direction * 50, ForceMode2D.Impulse);
-            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CANNON);
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CANNON, SoundType.GetType_OneShotSingleUse());
         }
     }
 
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == "Star")
         {
-            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CATCH);
+            SoundManager.Instance.PlaySound(SoundEnum.EFFECT_CATCH, SoundType.GetType_OneShotSingleUse());
             gameManager.starCollected = true;
             Destroy(collision.gameObject);
         }

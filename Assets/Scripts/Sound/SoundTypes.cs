@@ -73,10 +73,23 @@ public class SoundType // configuration for AudioSourceBehavior
         );
     }
 
-    public static SoundType GetType_Looped()
+    public static SoundType GetType_LoopedPersistent()
     {
         return new SoundType(
             isPersistent: true,
+            isLooping: true,
+            isRandomized: false,
+            isPausable: true,
+            isMutable: true,
+            pitchRange: null,
+            volumeMultiplier: 1f
+        );
+    }
+
+    public static SoundType GetType_LoopedSingleScene()
+    {
+        return new SoundType(
+            isPersistent: false,
             isLooping: true,
             isRandomized: false,
             isPausable: true,

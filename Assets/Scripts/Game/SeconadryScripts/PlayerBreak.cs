@@ -31,7 +31,7 @@ public class PlayerBreak : MonoBehaviour
     {
         for(int i=0; i<4; i++)
         {
-            SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_TEAR, pos, true);
+            SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_TEAR, pos, SoundType.GetType_OneShotMultiUse());
             yield return new WaitForSeconds(0.3f);
         }
     }

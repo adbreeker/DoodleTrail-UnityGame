@@ -54,7 +54,7 @@ public class LC_TestGameManager : MonoBehaviour
     //buttons ------------------------------------------------------------------------------------------
     public void StartButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         startB.gameObject.SetActive(false);
         reloadB.gameObject.SetActive(true);
         reverseB.interactable = false;
@@ -64,19 +64,19 @@ public class LC_TestGameManager : MonoBehaviour
 
     public void ReloadButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UndoButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         drawer.UndoLine();
     }
 
     public void ReverseButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         player.GetComponent<Player>().ReverseForce();
         foreach (ArrowRotator rotator in startingGround.GetComponentsInChildren<ArrowRotator>())
         {
@@ -86,14 +86,14 @@ public class LC_TestGameManager : MonoBehaviour
 
     public void StartModeButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         player.GetComponent<Player>().StartMode *= -1;
     }
 
 
     public void UnPauseButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }

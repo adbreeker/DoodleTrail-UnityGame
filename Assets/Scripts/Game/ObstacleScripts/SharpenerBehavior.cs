@@ -34,7 +34,7 @@ public class SharpenerBehavior : Obstacle
             float timeElapsed = 0f;
             _VFX.SetActive(true);
 
-            AudioSourceController sound = SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_VACUUM, transform.position, SoundType.GetType_Looped());
+            AudioSourceController sound = SoundManager.Instance.PlaySound3D(SoundEnum.EFFECT_VACUUM, transform.position, SoundType.GetType_LoopedSingleScene());
             while (timeElapsed < pullingDuration)
             {
                 float effectiveRange = pullingRange * transform.lossyScale.x * 2f;

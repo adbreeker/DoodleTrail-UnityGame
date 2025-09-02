@@ -47,7 +47,7 @@ public class TutorialManager : MonoBehaviour
 
     public void CloseTutorialButton()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON);
+        SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
         tut_hierarchy[actuallTutorial].SetActive(false);
         if(actuallTutorial == tut_hierarchy.Length - 1)
         {
