@@ -95,6 +95,7 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSourceController.gameObject);
     }
 
+
 #if UNITY_EDITOR
     private void UpdateSoundsCollection()
     {
