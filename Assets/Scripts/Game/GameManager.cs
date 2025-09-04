@@ -121,12 +121,19 @@ public class GameManager : MonoBehaviour
     public void LoadNextLvLButton()
     {
         SoundManager.Instance.PlaySound(SoundEnum.UI_BUTTON, SoundType.GetType_OneShotUI());
-        if (Random.Range(1,3) == 1)
+        if (lvl_id != (levels.LevelsCount() - 1))
         {
-            adsManager.GetComponent<InterestialAd>().ShowAd();
+            if (Random.Range(1, 3) == 1)
+            {
+                adsManager.GetComponent<InterestialAd>().ShowAd();
+            }
+            MenuManager.LvlSelected = lvl_id + 1;
+            SceneManager.LoadScene("Game");
         }
-        MenuManager.LvlSelected = lvl_id + 1;
-        SceneManager.LoadScene("Game");
+        else
+        {
+            SceneManager.LoadScene("FinalThanks");
+        }
     }
 
     // game -----------------------------------------------------------------------------------------------
@@ -172,11 +179,6 @@ public class GameManager : MonoBehaviour
         reverseB.interactable = false;
         startModeB.interactable = false;
         lvlCompletedPanel.SetActive(true);
-
-        if (lvl_id == (levels.LevelsCount() - 1))
-        {
-            nextLvLB.interactable = false;
-        }
 
         //manage lvl starts rate
 
