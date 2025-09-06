@@ -10,6 +10,7 @@ public class CreditsManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         SoundManager.Instance.PlaySound(SoundEnum.FINISH_WIN, SoundType.GetType_OneShotSingleUse());
         _allowToExit = false;
 

@@ -177,7 +177,7 @@ public class EndlessGameManager : MonoBehaviour
 
     IEnumerator LvLFailed(float deley)
     {
-        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL, SoundType.GetType_OneShotSingleUse());
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL, SoundType.GetType_OneShotUI());
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
         if(newBest)
