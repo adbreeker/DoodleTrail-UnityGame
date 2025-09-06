@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ThanksManager : MonoBehaviour
+public class CreditsManager : MonoBehaviour
 {
     [SerializeField]  RectTransform _buttonExit;
     bool _allowToExit = false;
@@ -34,7 +34,7 @@ public class ThanksManager : MonoBehaviour
         float timeElapsed = 0f;
         while(timeElapsed < delay)
         {
-            buttonText.text = "No ratey no? (" + (int)(delay - timeElapsed) + "s)";
+            buttonText.text = "No ratey no? (" + Mathf.CeilToInt(delay - timeElapsed) + "s)";
             yield return null;
             timeElapsed += Time.deltaTime;
         }

@@ -1493,7 +1493,7 @@ GameObject:
   - component: {fileID: 1737027213}
   - component: {fileID: 1737027215}
   m_Layer: 0
-  m_Name: ThanksManager
+  m_Name: CreditsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

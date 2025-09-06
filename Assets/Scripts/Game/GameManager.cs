@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("FinalThanks");
+            SceneManager.LoadScene("Credits");
         }
     }
 
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
 
     public void LvLCompleted()
     {
-        SoundManager.Instance.PlaySound(SoundEnum.FINISH_WIN, SoundType.GetType_OneShotSingleUse());
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_WIN, SoundType.GetType_OneShotUI());
         Time.timeScale = 0;
         if (lvl_id < levels.LevelsCount())
         {
@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LvLFailed(float deley)
     {
-        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL, SoundType.GetType_OneShotSingleUse());
+        SoundManager.Instance.PlaySound(SoundEnum.FINISH_FAIL, SoundType.GetType_OneShotUI());
         yield return new WaitForSecondsRealtime(deley);
         Time.timeScale = 0;
         failPanel.SetActive(true);

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Endless.unity
     guid: 2c539b4c022aa3641831dbda1e9af349
   - enabled: 1
-    path: Assets/Scenes/FinalThanks.unity
+    path: Assets/Scenes/Credits.unity
     guid: 974610e9b5f4b0c4b817e06d755ffbd7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
