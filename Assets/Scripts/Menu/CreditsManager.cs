@@ -7,6 +7,7 @@ public class CreditsManager : MonoBehaviour
 {
     [SerializeField]  RectTransform _buttonExit;
     bool _allowToExit = false;
+    Coroutine _exitDelayCoroutine;
 
     void Start()
     {
@@ -21,11 +22,11 @@ public class CreditsManager : MonoBehaviour
         
         if(PlayerPrefs.GetInt("Rated") == 0)
         {
-            StartCoroutine(AllowExitAfterDelay(10f));
+            _exitDelayCoroutine = StartCoroutine(AllowExitAfterDelay(10f));
         }
         else
         {
-            _allowToExit = true;
+            AllowExit();
         }
     }
 
@@ -41,6 +42,19 @@ public class CreditsManager : MonoBehaviour
         }
         buttonText.text = "Exit to Menu";
         _allowToExit = true;
+    }
+
+    void AllowExit()
+    {
+        TextMeshProUGUI buttonText = _buttonExit.GetComponentInChildren<TextMeshProUGUI>();
+        buttonText.text = "Exit to Menu";
+        _allowToExit = true;
+
+        if(_exitDelayCoroutine != null)
+        {
+            StopCoroutine(_exitDelayCoroutine);
+            _exitDelayCoroutine = null;
+        }
     }
 
     public void Button_Menu()
@@ -72,5 +86,7 @@ public class CreditsManager : MonoBehaviour
         {
             Application.OpenURL("https://play.google.com/store/apps/details?id=" + packageName);
         }
+
+        AllowExit();
     }
 }
